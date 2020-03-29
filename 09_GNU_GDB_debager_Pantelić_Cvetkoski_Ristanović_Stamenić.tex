@@ -319,61 +319,6 @@ debagovanje izvršava ka udaljenom računaru. Uz pomoć odgovarajućih protokola
 sa GDBserverom pokrenutim na udaljenom računaru\cite{master_rad}. 
 
 
-% \section{Upotreba GDB-a}
-% \label{sec:upotreba}
-% 
-% GNU Debugger je kao i većina GNU alata prvobitno bio namenjen za rad iz konzole. Kako je vreme prolazilo, javila se potreba za 
-% grafičkim interfejsom kako bi se olakšao rad programera pri debagovanju. Tokom vremena javljala su se mnoga rešenja, kako
-% samostalni grafički interfejsi, tako i razvojna okruženja koja koriste GDB kao svoj debager. Neka od grafičkih rešenja su
-% \textbf{gdbgui}, \textbf{KDbg}, \textbf{CGDB}, dok su \textbf{CLion}, \textbf{Qt Creator}, \textbf{Code::Blocks} neka 
-% od razvojnih okruženja koja podržavaju GDB\cite{sourceware}. Pojedini gorepomenuti alati će podrobnije biti opisani u daljem tekstu, kroz neki 
-% vid upotrebe samih alata.
-
-
-% \subsection{GDB iz konzole}
-% \label{subsec:konzola}
-% 
-% Rad iz konzole možda nije previše popularna disciplina, ali može biti od velikog značaja ukoliko se debaguje neki kraći kod za koji
-% nema potrebe podizati čitavo grafičko okruženje ili ukoliko se radi na sistemima ograničene 
-% memorije. \\
-% Kako bi se sam GDB pustio u rad, neophodno je pokrenuti ga komandom \textit{gdb program}. Postoje i drugi načini
-% pokretanja samog programa, a neki od njih su \textit{gdb -e program -c core-fajl} kako bi imali određeni fajl
-% u koji bi se upisivala stanja programa ili \textit{gdb program --id-procesa} kako bi se povezali sa već pokrenutim procesom.
-% Ono na šta mi obraćamo pažnju je prvi vid pokretanja. Jedna jako korisna opcija je navođenje \textit{--tui} zastavice pri pokretanju
-% samog debagera. Korisna je iz razloga što korisnik dobija izvorni kod programa koji debaguje, što dalje olakšava posao postavljanja
-% tačaka prekida i eventualno uočavanje nekih od grešaka\cite{oReilly}. Tabela \ref{tab:tabelaKonzola} prikazuje neke od najbitnijih komandi
-% GDB-a, dok se skup svih može naći na adresi \textit{http://www.yolinux.com/TUTORIALS/\\GDB-Commands.html\#GDB\_COMMAND\_LINE\_ARGS}.
-% 
-% 
-% \begin{table}[h!]
-% \begin{center}
-% \caption{Tabela nekih od najbitnijih komandi.}
-% \begin{tabular}{|p{4cm}|p{6cm}|} \hline
-% Komanda & Značenje\\ \hline
-% help <klasa|komanda|all> & Izlistavanje pomoći za klasu komandi, samu komandu ili sve klase komandi\\ \hline
-% run & Pokretanje samog programa, sa svim navedenim tačkama prekida \\ \hline
-% appropos \textit{reč} & Pretraga komande vezane za datu reč\\ \hline
-% info args & Izlistavanje argumenata komandne linije \\ \hline
-% info breakpoints & Izlistavanje tačaka prekida \\ \hline
-% info registers & Izlistavanje registara u upotrebi \\ \hline
-% info threads & Izlistavanje niti koje program koristi \\ \hline
-% break +|- broj-linija & Postavljanje tačke prekida za dati broj linija od trenutne pozicije pri prekidu \\ \hline
-% delete & Brisanje svih tačaka prekida \\ \hline
-% delete broj-tačke-prekida & Brisanje tačke prekida sa određenim brojem \\ \hline
-% disable broj-tačke-prekida | raspon & Isključivanje tačke prekida sa datim brojem ili više tačaka u nekom rasponu \\ \hline
-% enable broj-tačke-prekida & Uključivanje tačke prekida sa određenim brojem \\ \hline
-% continue | c & Nastavak izvršavanja do naredne tačke prekida \\ \hline
-% finish & Dovršavanje izvršavanje započete funkcije \\ \hline
-% step <broj-koraka> & Prelazak na narednu liniju koda, ili liniju za određen broj koraka udaljenu \\ \hline
-% next <broj-koraka> & Izvršavanje naredne linije koda, ili narednih <broj-koraka> linija koda \\ \hline
-% where & Prikaz trenutne pozicije u kodu, broj linije \\ \hline
-% backtrace & Prikaz trenutne pozicije, ime funkcije, kojim putem se došlo do tog stanja\\ \hline
-% <up|down><broj-okvira> & Pomeraj gore ili dule kroz stek okvire, za onoliko okvira koliko zadamo, ili jedan ako ne navedemo ništa \\ \hline
-% \end{tabular}
-% \label{tab:tabelaKonzola}
-% \end{center}
-% \end{table}
-
 \section{Upotreba GDB-a kroz grafički pristup}
 \label{subsec:gui}
 
