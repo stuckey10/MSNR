@@ -214,20 +214,6 @@ sistemima i Mac OS X. Koristi se za mnoge programske jezike, uključujući
 Adu, C, C++, Objective-C, Free Pascal, Fortran, Javu.
 Poslednja realizovana verzija alata GNU GDB u vreme pisanje ovog rada je 9.1. \cite{sourceware}
 
-GDB je konzolni alat (pokreće se iz konzolne linije). Međutim, zbog popularnosti grafičkih korisničkih interfejsa
-(\textit{eng.} GUI) razvijen je veliki broj debagera sa grafičkim korisničkim okruženjem za Unix sisteme\cite{art_debugging}. 
-Jedan od najpoznatijih debagera sa GUI-em je DDD, koji podržava grafički prikaz za više debagera, među kojima je
-GDB, a pored njega i DBX, WDB, Ladebug, JDB, XDB. Sam DDD se više ne razvija, od 2011-e, zaključno sa verzijom 3.3.12. \cite{GNUOrg}
-Pored DDD-a, KDbg je još jedan vid grafičkog okruženja za GDB koji se više ne razvija. KDbg je bio namenjen
-Linux operativnim sistemima sa KDE grafičkim okruženjem. Jedan od trenutno aktuelnih grafičkig interfejsa jeste
-gdbgui, o kojem će više reči biti u delu \ref{subsec:gdbgui}.
-
-Sa druge strane, danas je sve veća upotreba integrisanih razvojnih okruženja (\textit{eng.} IDE),
-koji predstavlja više od alata za debagovanje. IDE obuhvata editor, alat za izgradnju koda, debager i druga 
-razvojna pomagala. Jedan od najpoznatijih IDE okruženja koje koristi GDB debager je Eclipse sistem,
-a pored njega prisutan je i u CLion-u, QT Creatoru-u, Code::Blocks-u\cite{sourceware}.
-Korišćenje GDB-a kroz QT Creator će biti podrobnije objašnjeno u delu \ref{subsec:QT}
-
 Jedna od specifičnosti GNU GDB debagera, pored svoje standardne namene, jeste da omogućava i 
 pronalaženje, analiziranje i otklanjanje grešaka u programima koji se izvršavaju na računarima drugih 
 arhitektura (udaljeno debagovanje)\cite{master_rad}.
@@ -288,38 +274,9 @@ vodi u suprotnom smeru. Navedene operacije mogu biti veoma korisne, jer vrednost
 promenljivih u nekim od ranijih poziva mogu dati rešenje o tome šta je tačno izazvalo bag\cite{art_debugging}. 
 GDB komanda \textbf{backtrace} pokazuje ceo stek tj. celu kolekciju stek frejmova koja trenutno postoji na steku.
 
-Neke od najbitnijih komandi GDB-a date su u tabeli \ref{tab:tabelaKonzola}, dok se više informacija
+Neke od najbitnijih komandi GDB-a date su u dodatku u tabeli \ref{tab:tabelaKonzola}, dok se više informacija
 može naći na \textit{http://www.yolinux.com/TUTORIALS/\\GDB-Commands.html\#GDB\_COMMAND\_LINE\_ARGS},
 kao i u MAN stranama Linux operativnih sistema.
-
-\begin{table}[!h!]
-\begin{center}
-\caption{Tabela nekih od najbitnijih komandi.}
-\begin{tabular}{|p{4cm}|p{6cm}|} \hline
-Komanda & Značenje\\ \hline
-help <klasa|komanda|all> & Izlistavanje pomoći za klasu komandi, samu komandu ili sve klase komandi\\ \hline
-run & Pokretanje samog programa, sa svim navedenim tačkama prekida \\ \hline
-appropos \textit{reč} & Pretraga komande vezane za datu reč\\ \hline
-info args & Izlistavanje argumenata komandne linije \\ \hline
-info breakpoints & Izlistavanje tačaka prekida \\ \hline
-info registers & Izlistavanje registara u upotrebi \\ \hline
-info threads & Izlistavanje niti koje program koristi \\ \hline
-break +|- broj-linija & Postavljanje tačke prekida za dati broj linija od trenutne pozicije pri prekidu \\ \hline
-delete & Brisanje svih tačaka prekida \\ \hline
-delete broj-tačke-prekida & Brisanje tačke prekida sa određenim brojem \\ \hline
-disable broj-tačke-prekida | raspon & Isključivanje tačke prekida sa datim brojem ili više tačaka u nekom rasponu \\ \hline
-enable broj-tačke-prekida & Uključivanje tačke prekida sa određenim brojem \\ \hline
-continue | c & Nastavak izvršavanja do naredne tačke prekida \\ \hline
-finish & Dovršavanje izvršavanje započete funkcije \\ \hline
-step <broj-koraka> & Prelazak na narednu liniju koda, ili liniju za određen broj koraka udaljenu \\ \hline
-next <broj-koraka> & Izvršavanje naredne linije koda, ili narednih <broj-koraka> linija koda \\ \hline
-where & Prikaz trenutne pozicije u kodu, broj linije \\ \hline
-backtrace & Prikaz trenutne pozicije, ime funkcije, kojim putem se došlo do tog stanja\\ \hline
-<up|down><broj-okvira> & Pomeraj gore ili dule kroz stek okvire, za onoliko okvira koliko zadamo, ili jedan ako ne navedemo ništa \\ \hline
-\end{tabular}
-\label{tab:tabelaKonzola}
-\end{center}
-\end{table}
 
 \subsubsection{Tačke zaustavljanja}
 \label{subsec:gdbtackezaustavljanja}
@@ -420,6 +377,21 @@ sa GDBserverom pokrenutim na udaljenom računaru\cite{master_rad}.
 \section{Upotreba GDB-a kroz grafički pristup}
 \label{subsec:gui}
 
+GDB je konzolni alat (pokreće se iz konzolne linije). Međutim, zbog popularnosti grafičkih korisničkih interfejsa
+(\textit{eng.} GUI) razvijen je veliki broj debagera sa grafičkim korisničkim okruženjem za Unix sisteme\cite{art_debugging}. 
+Ideja je u osnovi pružiti programsko okruženje u kojem se uređivanje koda i izvršavanje odvijaju istovremeno - unutar okruženja za uređivanje
+koda - pomocu alata za praćenje stanja promenljivih\cite{computerworld}.
+Jedan od najpoznatijih debagera sa GUI-em je DDD, koji podržava grafički prikaz za više debagera, među kojima je
+GDB, a pored njega i DBX, WDB, Ladebug, JDB, XDB. Sam DDD se više ne razvija, od 2011-e, zaključno sa verzijom 3.3.12. \cite{GNUOrg}
+Pored DDD-a, KDbg je još jedan vid grafičkog okruženja za GDB koji se više ne razvija. KDbg je bio namenjen
+Linux operativnim sistemima sa KDE grafičkim okruženjem. Jedan od trenutno aktuelnih grafičkig interfejsa jeste
+gdbgui, o kojem će više reči biti u delu \ref{subsec:gdbgui}.
+
+Sa druge strane, danas je sve veća upotreba integrisanih razvojnih okruženja (\textit{eng.} IDE),
+koji predstavlja više od alata za debagovanje. IDE obuhvata editor, alat za izgradnju koda, debager i druga 
+razvojna pomagala. Jedan od najpoznatijih IDE okruženja koje koristi GDB debager je Eclipse sistem,
+a pored njega prisutan je i u CLion-u, QT Creatoru-u, Code::Blocks-u\cite{sourceware}.
+Korišćenje GDB-a kroz QT Creator će biti podrobnije objašnjeno u delu \ref{subsec:QT}
 
 \subsection{Grafičko okruženje gdbgui}
 \label{subsec:gdbgui}
@@ -578,10 +550,10 @@ razumevanje detalja i načina na koji kod funkcioniše. Svaki od
 dibagera podražava programera u ovom zadatku na drugačiji način.
 \item Debagovanje grešaka u višenitnim procesima\\
 Savremene aplikacije su višenitni i višeprocesni sistemi. 
-{\em Potraga za uzrokom greške u mnogim slučajevima liči na traženje igle u
-plastu sena. Posebno višenitne aplikaje zahtevaju veliko znanje
-programera o funkcionisanju celog sistema.\cite{tools} } Srećom, neki alati
-omogućavaju pregledanje pojedinačnih niti.
+Potraga za uzrokom greške u mnogim slučajevima liči na traženje igle
+u plastu sena. Posebno višenitne aplikaje zahtevaju veliko znanje
+programera o funkcionisanju celog sistema.\cite{tools} 
+Srećom, neki alati omogućavaju pregledanje pojedinačnih niti.
 \item Da li program za otklanjanje grešaka brzo i lako šalje detaljne informacije o otkrivenim greškama?
 \end{enumerate}
 
@@ -652,7 +624,7 @@ Kakva je razlika između Valgrind-a i GDB-a?
 \item[•]GDB ne proverava da li se koriste neinicijalizovane vrednosti ili je preplavljena dinamička memorija;
 \item[•]I GDB i Valgrind će pokazati broj linije u kojoj se desio segmentation fault;
 \item[•]Valgrind često pokazuje i uzrok segfault-a;
-\item[•]Često se greške pronalaze i ispravljaju brže koristeći Valgrind nego GDB. 
+\item[•]Često se greške pronalaze i ispravljaju brže koristeći Valgrind nego GDB. \cite{hpc}
 \end{enumerate}
 
 \section{Zaključak}
@@ -660,12 +632,45 @@ Kakva je razlika između Valgrind-a i GDB-a?
 
 Kao što smo već pomenuli, u procesu programiranja često dolazi do pojave bagova, pa se tako suočavamo i sa procesom njihovog otklanjanja, zbog toga moramo naučiti da nam proces njihovog traženja i odstranjivanja ne oduzima mnogo vremena, ni energije. Nekada je lako prevideti nešto u kodu, zaboraviti neku trivijalnu stvar ili jednostavno napraviti neku sitnu grešku koja nas može koštati mnogo vremena provedenog gledajući u kod, ispitivajući pogrešne pretpostavke. U ovakvim slučajevima korišćenje debagera nam može uštedeti dosta vremena, ali i živaca. To što nezanemarljiv broj programera izbegava korišćenje alata za debagovanje, jer misle da je učenje korišćenja istih previše komplikovano ili da će im bespotrebno oduzeti vreme, nam govori da oni nisu dovoljno upućeni u mogućnosti i prednosti rada sa debagerom.
 
-{\em Snagu gdb-a predstavljaju njegove karakteristike, mogućnost da se primeni na mnogim platformamama kao i u 
-stepenu do koga njegovo ponašanje može da se prilagodi spečificnim zahtevima.  \cite{gnu} }
+Snagu gdb-a predstavljaju njegove karakteristike, mogućnost da se primeni na mnogim platformamama kao i u 
+stepenu do koga njegovo ponašanje može da se prilagodi spečificnim zahtevima.  \cite{gnu}
+
 
 \addcontentsline{toc}{section}{Literatura}
 \appendix
 \bibliography{seminarski} 
 \bibliographystyle{plain}
+
+\section{Dodatak}
+\label{dodatak}
+
+\begin{table}[!h!]
+\begin{center}
+\caption{Tabela nekih od najbitnijih komandi.}
+\begin{tabular}{|p{4cm}|p{6cm}|} \hline
+Komanda & Značenje\\ \hline
+help <klasa|komanda|all> & Izlistavanje pomoći za klasu komandi, samu komandu ili sve klase komandi\\ \hline
+run & Pokretanje samog programa, sa svim navedenim tačkama prekida \\ \hline
+appropos \textit{reč} & Pretraga komande vezane za datu reč\\ \hline
+info args & Izlistavanje argumenata komandne linije \\ \hline
+info breakpoints & Izlistavanje tačaka prekida \\ \hline
+info registers & Izlistavanje registara u upotrebi \\ \hline
+info threads & Izlistavanje niti koje program koristi \\ \hline
+break +|- broj-linija & Postavljanje tačke prekida za dati broj linija od trenutne pozicije pri prekidu \\ \hline
+delete & Brisanje svih tačaka prekida \\ \hline
+delete broj-tačke-prekida & Brisanje tačke prekida sa određenim brojem \\ \hline
+disable broj-tačke-prekida | raspon & Isključivanje tačke prekida sa datim brojem ili više tačaka u nekom rasponu \\ \hline
+enable broj-tačke-prekida & Uključivanje tačke prekida sa određenim brojem \\ \hline
+continue | c & Nastavak izvršavanja do naredne tačke prekida \\ \hline
+finish & Dovršavanje izvršavanje započete funkcije \\ \hline
+step <broj-koraka> & Prelazak na narednu liniju koda, ili liniju za određen broj koraka udaljenu \\ \hline
+next <broj-koraka> & Izvršavanje naredne linije koda, ili narednih <broj-koraka> linija koda \\ \hline
+where & Prikaz trenutne pozicije u kodu, broj linije \\ \hline
+backtrace & Prikaz trenutne pozicije, ime funkcije, kojim putem se došlo do tog stanja\\ \hline
+<up|down><broj-okvira> & Pomeraj gore ili dule kroz stek okvire, za onoliko okvira koliko zadamo, ili jedan ako ne navedemo ništa \\ \hline
+\end{tabular}
+\label{tab:tabelaKonzola}
+\end{center}
+\end{table}
 
 \end{document}
