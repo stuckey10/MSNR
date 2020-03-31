@@ -16,6 +16,7 @@
 \hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
 
 \usepackage{listings}
+\usepackage{xurl}
 
 %\newtheorem{primer}{Пример}[section] %ćirilični primer
 \newtheorem{primer}{Primer}[section]
@@ -94,22 +95,24 @@ poput poboljšanog razumevanja samog rada programa,
 kakve greške najčešće pravimo, stičemo uvid o čitljivosti i
 kvalitetu sopstvenog koda. Uzimajuci u obzir potrebe i raznolikost
 zadataka koje programer ima, teško je preceniti značaj odgovarajuće
-alatne podrške za programere. Na samom početku ovog rada
+alatne podrške za programere. \cite{seminarski_rad}
+Na samom početku ovog rada
 upoznaćemo se sa bagovima i debagovanjem, a u daljem tekstu ćemo
 detaljnije opisati specifičnosti debagera GDB, kako i u kojim
-okruženjima se koristi, kao i poređenje sa drugim debagerima.
+okruženjima se koristi, kao i poređenje sa drugim debagerima. 
 
 \section{Bag}
 \label{sec:bag}
-Čak i kada je program sintaksno ispravan, to još uvek ne znači da on i radi ono za šta je napisan. 
-U tom slučaju program sadrži greške logičke prirode, tj. programer je tokom pisanja programa 
-pogrešno protumačio značenje (semantiku) pojedinih naredbi koje je napisao. Otkrivanje i ispravljanje
-semantičkih grešaka je daleko teže od otkrivanja i ispravljanja sintaksnih grešaka. 
-Popularni naziv za semantičku grešku u programu je bag (\textit{eng.} bug).
+Greške u programima se mogu podeliti u dve grupe, sintaksne i semantičke. Kada je program sintaksno ispravan, to još uvek
+ ne znači da on i radi ono za šta je napisan. U tom slučaju program sadrži greške logičke prirode, tj. programer je tokom 
+ pisanja programa  pogrešno protumačio značenje (semantiku) pojedinih naredbi koje je napisao. Otkrivanje i ispravljanje 
+ semantičkih grešaka je daleko teže od otkrivanja i ispravljanja sintaksnih grešaka. Popularni naziv za semantičku grešku 
+ u programu je bag (\textit{eng.} bug).
+
 
 Propust (greška, bag) u razvoju softvera je sve ono što stvara probleme u funkcionisanju softvera 
-kao završnog proizvoda. "Bag predstavlja sve ono što ima za posledicu da se softver ne ponaša u 
-skladu sa specifikacijom ili očekivanjem korisnika."
+kao završnog proizvoda. Bag predstavlja sve ono što ima za posledicu da se softver ne ponaša u 
+skladu sa specifikacijom ili očekivanjem korisnika. \cite{deb_app}
 
 \vspace{4mm}
 
@@ -141,13 +144,13 @@ nedostataka koji sprečavaju tačnu operaciju računarskog softvera ili sistema.
 obično otkriva jer se program neočekivano ponaša. Da bi se pronašao uzrok kvara, 
 ključno je objasniti zašto dolazi do takvog ponašanja. Debagovanje ima tendenciju da 
 bude teže kada su različiti podsistemi čvrsto povezani, pošto promene u jednom mogu da 
-prouzrokuju nastanak bagova u drugom.
+prouzrokuju nastanak bagova u drugom. \cite{debagovanje}	
 
 \vspace{4mm}
 
-"Otklanjanje grešaka je dvostruko teže nego pisanje koda. Stoga, ako napišete kod što 
+\textit{"Otklanjanje grešaka je dvostruko teže nego pisanje koda. Stoga, ako napišete kod što 
 je pametnije moguće, po definiciji, niste dovoljno pametni da ga ispravite."\\
-\hspace*{0pt}\hfill\textit{-Brian V. Kernighan}
+\hspace*{0pt}\hfill-Brian V. Kernighan}
 
 \vspace{4mm}
 Debagovanje se sastoji iz četiri koraka:
@@ -185,7 +188,7 @@ odvlači pažnju od pravog zadatka.
 
 Suprotno tome, sa grafičkim alatima za uklanjanje bagova sve što moramo da uradimo kako bismo 
 ispitali vrednost promenljive je da pomerimo miš do instance te promenljive u kodu i biće
-prikazana njena trenutna vrednost. Pored ovoga, debageri pružaju još dosta razloga da ih koristimo.
+prikazana njena trenutna vrednost. Pored ovoga, debageri pružaju još dosta razloga da ih koristimo.\cite{art_debugging}
 
 \subsection{Debager}
 \label{subsec:debager}
@@ -281,7 +284,7 @@ promenljivih u nekim od ranijih poziva mogu dati rešenje o tome šta je tačno 
 GDB komanda \textbf{backtrace} pokazuje ceo stek tj. celu kolekciju stek frejmova koja trenutno postoji na steku.
 
 Neke od najbitnijih komandi GDB-a date su u dodatku u tabeli \ref{tab:tabelaKonzola}, dok se više informacija
-može naći na \textit{http://www.yolinux.com/TUTORIALS/\\GDB-Commands.html\#GDB\_COMMAND\_LINE\_ARGS},
+može naći na \url{http://www.yolinux.com/TUTORIALS/\\GDB-Commands.html\#GDB\_COMMAND\_LINE\_ARGS},
 kao i u MAN stranama Linux operativnih sistema.
 
 \subsubsection{Tačke zaustavljanja}
@@ -484,7 +487,7 @@ Problem u ovom vidu ispisa jeste i što nema informacija gde se ta greška dogod
 
 \section{Poređenje sa drugim popularnim dibagerima}
 \label{sec:poredjenje}
-Postoji mnogo dibagera koji se mogu koristit kako
+Postoji mnogo dibagera koji se mogu koristiti kako
 na različitim operativnim sistemima tako i za različite programske jezike. 
 Neke od stvari na koje treba obratiti paznju prilikom izbora dibagera:
 
