@@ -76,7 +76,7 @@ mi16177@alas.matf.bg.ac.rs}
 
 \abstract{
 Danas je teško zamisliti da bismo mogli napraviti bilo koji značajan projekat bez korišćenja
-naprednih alata za pronalaženje grešaka. U narednom tekstu čitalac će se upoznati sa terminom debagovanje, 
+naprednih alata za pronalaženje grešaka. U narednom tekstu čitalac će se upoznati sa terminom "debagovanje", 
 specifičnostima GDB-a, načinom upravljanja i njegovim korišćenjem u razvojnim okruženjima. 
 Takođe, napravljena je paralela između GDB-a i drugih popularnih debagera.
 }
@@ -201,8 +201,8 @@ sporije izvršavaju nego kada se isti program izvršava u normalnom režimu rada
 u pitanju rad na istom procesoru. \cite{debugger} Kada program usled baga ili netačnog podatka ne može da 
 nastavi normalno sa radom, debager pokazuje lokaciju problema u originalnom kodu, takođe
 debager nam omogućava da postavimo tačke posmatranja koje nam
-mogu reći u kom trenutku tokom izvođenja programa vrednost
-određene promenljive dobija sumnjivu vrednost, omogućava nam da
+mogu reći u kom trenutku tokom izvođenja programa 
+određena promenljiva dobija sumnjivu vrednost, omogućava nam da
 pratimo izvršavanje programa, da ga zaustavimo, restartujemo,
 postavimo mesta prekida, i da izmenimo vrednosti u memoriji. 
 
@@ -218,7 +218,7 @@ sistemima i Mac OS X. Koristi se za mnoge programske jezike, uključujući
 Adu, C, C++, Objective-C, Free Pascal, Fortran, Javu.
 Poslednja realizovana verzija alata GNU GDB u vreme pisanje ovog rada je 9.1. \cite{sourceware}
 
-Jedna od specifičnosti GNU GDB debagera, pored svoje standardne namene, jeste da omogućava i 
+Jedna od specifičnosti GNU debagera, pored svoje standardne namene, jeste da omogućava i 
 pronalaženje, analiziranje i otklanjanje grešaka u programima koji se izvršavaju na računarima drugih 
 arhitektura (udaljeno debagovanje)\cite{master_rad}.
 
@@ -240,7 +240,7 @@ Da bi se sam GDB koristio na određenom programu, neophodno je isti kompajlirati
 na određen način. Za programske jezike C i C++ to je zastavicom \textit{-g}, odnosno
 \textit{gcc program.c -g -o program} za C, dok je za C++ \textit{g++ program.cpp -g -o program}.
 
-Jedna jako korisna opcija je navođenje \textit{--tui} zastavice pri pokretanju samog debagera. 
+Jedna jako korisna opcija je navođenje \textit{-\phantom{}-tui} zastavice pri pokretanju samog debagera. 
 Korisna je iz razloga što korisnik dobija izvorni kod programa koji debaguje, što dalje olakšava posao postavljanja
 tačaka prekida i eventualno uočavanje nekih od grešaka\cite{oReilly}.\\
 Neke od metoda kojima programer može upravljati GDB debagerom:\cite{art_debugging}
@@ -284,7 +284,7 @@ promenljivih u nekim od ranijih poziva mogu dati rešenje o tome šta je tačno 
 GDB komanda \textbf{backtrace} pokazuje ceo stek tj. celu kolekciju stek frejmova koja trenutno postoji na steku.
 
 Neke od najbitnijih komandi GDB-a date su u dodatku u tabeli \ref{tab:tabelaKonzola}, dok se više informacija
-može naći na \url{http://www.yolinux.com/TUTORIALS/\\GDB-Commands.html\#GDB\_COMMAND\_LINE\_ARGS},
+može naći na \url{http://www.yolinux.com/TUTORIALS/GDB-Commands.html\#GDB\_COMMAND\_LINE\_ARGS},
 kao i u MAN stranama Linux operativnih sistema.
 
 \subsubsection{Tačke zaustavljanja}
@@ -343,7 +343,7 @@ Sa druge strane, danas je sve veća upotreba integrisanih razvojnih okruženja (
 koji predstavlja više od alata za debagovanje. IDE obuhvata editor, alat za izgradnju koda, debager i druga 
 razvojna pomagala. Ideja je u osnovi pružiti programsko okruženje u kojem se uređivanje koda i izvršavanje
 odvijaju istovremeno - unutar okruženja za uređivanje koda - pomoću alata za praćenje stanja promenljivih\cite{computerworld}.
-Jedan od najpoznatijih IDE okruženja koje koristi GDB debager je Eclipse sistem,
+Jedan od najpoznatijih IDE okruženja koje koristi GDB je Eclipse sistem,
 a pored njega prisutan je i u CLion-u, QT Creatoru-u, Code::Blocks-u\cite{sourceware}.
 %Korišćenje GDB-a kroz QT Creator će biti podrobnije objašnjeno u delu \ref{subsec:QT}
 
@@ -365,7 +365,7 @@ u datom trenutku vremena. Tako se tu mogu naći informacije o niti u kojoj se na
 registrima i ostalo. Iznad ove dve celine, nalazi se deo za kontrolisanje programa. Sačinjen je od prostora
 za unos putanje do programa, koji će debager koristiti, a on će biti učitan u program klikom na dugme 
 \textit{Load Binary}. Sa desne strane se nalazi nekoliko dugmića za kontrolu izvršavanja programa.
-Tu nalaze naredbe za ponovno učitavanje programa, izvršavanje do naredne tačke prekida, obustavljanje
+Tu se nalaze naredbe za ponovno učitavanje programa, izvršavanje do naredne tačke prekida, obustavljanje
 programa, prelazak na sledeću instrukciju, na sledeći poziv funkcije, vraćanja nazad iz funkcije, kao i prelazak
 na sledeću mašinsku instrukciju sa ili bez poziva funkcije. Za one koji su navikli da rade iz konzole, tu se nalazi 
 i terminal. Na slici \ref{fig:gdbgui} je prikazan sam izgled programa.
@@ -425,8 +425,8 @@ Za početak, postavljanje tačaka prekida. Vrši se skoro isto kao i kod gdbgui-
 se ne klikće na sam broj linije, već malo levo od broja, te se tu prikazuje kružić koji označava da je
 tačka prekida postavljena. Ona se može onemogućiti/omogućiti ili uređivati desnim klikom na kružić i biranjem određene funkcionalnosti.
 Slika \ref{fig:point_info} prikazuje informacije o samoj tački prekida kada se
-kursorom pozicioniramo na dobijeni kružić. Tu imamo informacije o internom id-u tačke prekida, koji se dodeljuje
-po redosledu postavljanja, ne po redosledu u kodu počevši od prve linije, stanje tačke prekida (\textit{Internal ID}) 
+kursorom pozicioniramo na dobijeni kružić. Tu imamo informacije o internom id-u tačke prekida (\textit{Internal ID}) , koji se dodeljuje
+po redosledu postavljanja, ne po redosledu u kodu počevši od prve linije, stanje tačke prekida
 odnosno da li je omogućena ili ne (\textit{State}), tip (\textit{Breakpoint Type}),
 fajl u kojem se nalazi (\textit{Marker File}), broj linije u fajlu na kojoj se nalazi (\textit{Marker Line})
 i broj koliko smo se puta zaustavili u toj tački prekida (\textit{Hit Count}).
