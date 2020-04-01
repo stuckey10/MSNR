@@ -76,7 +76,7 @@ Nikola Stamenić, 177/2016, nikola.stamenic@hotmail.com
 \abstract{
 Danas je teško zamisliti da bismo mogli napraviti bilo koji značajan projekat bez korišćenja
 naprednih alata za pronalaženje grešaka. U ovom radu čitalac će se upoznati sa terminom \textbf{debagovanje}, 
-specifičnostima GDB-a, načinom upravljanja i njegovim korišćenjem u razvojnim okruženjima. 
+specifičnostima GDB-a, načinom upravljanja i njegovim korišćenjem u razvojnim okruže\-njima. 
 Takođe, napravljena je paralela između GDB-a i drugih popularnih debagera.
 }
 
@@ -88,17 +88,17 @@ Takođe, napravljena je paralela između GDB-a i drugih popularnih debagera.
 \label{sec:uvod}
 
 Može se reći da je sastavni deo pisanja programa njegovo
-debagovanje, jer je pojava bagova gotovo neizbežna. Greške nisu uvek
-loše za pojedinca. Uz pozitivan stav možemo sagledati prednosti
+debagovanje, jer je pojava bagova gotovo neizbežna. Međutim, greške nisu uvek
+loše za pojedinca. Uz pozitivan stav možemo sagledati prednosti pravljenja grešaka
 poput poboljšanog razumevanja samog rada programa,
-kakve greške najčešće pravimo, stičemo uvid o čitljivosti i
-kvalitetu sopstvenog koda. Uzimajuci u obzir potrebe i raznolikost
+vrsti grešaka koje najčešće pravimo, sticanja uvida o čitljivosti i
+kvalitetu sopstvenog koda. Uzimajući u obzir potrebe i raznolikost
 zadataka koje programer ima, teško je preceniti značaj odgovarajuće
-alatne podrške za programere. \cite{seminarski_rad}
+alatne podrške za programere\cite{seminarski=rad}. 
 Na samom početku ovog rada
 upoznaćemo se sa bagovima i debagovanjem, a u daljem tekstu ćemo
 detaljnije opisati specifičnosti debagera GDB, kako i u kojim
-okruženjima se koristi, kao i poređenje sa drugim debagerima. 
+okruženjima se koristi i kakav je GDB debager u poređenju sa drugim debagerima. 
 
 \section{Bag}
 \label{sec:bag}
@@ -111,16 +111,16 @@ Greške u programima se mogu podeliti u dve grupe, sintaksne i semantičke. Kada
 
 Propust (greška, bag) u razvoju softvera je sve ono što stvara probleme u funkcionisanju softvera 
 kao završnog proizvoda. Bag predstavlja sve ono što ima za posledicu da se softver ne ponaša u 
-skladu sa specifikacijom ili očekivanjem korisnika. \cite{deb_app}
+skladu sa specifikacijom ili očekivanjem korisnika\cite{deb_app}. 
 
 \vspace{4mm}
 
 Jedna od uobičajenih klasifikacija bagova je prema načinu ispoljavanja:
 \begin{enumerate}
-\item nekonzistentnosti u korisničkom interfejsu
-\item neispunjena očekivanja
-\item slabe performanse
-\item padovi sistema (programa) ili oštećenja podataka
+\item Nekonzistentnosti u korisničkom interfejsu
+\item Neispunjena očekivanja
+\item Slabe performanse
+\item Padovi sistema (programa) ili oštećenja podataka
 \end{enumerate}
 
 \vspace{4mm}
@@ -140,10 +140,10 @@ Razlozi za greške uglavnom spadaju u sledeće kategorije procesa:
 
 Debagovanje (\textit{eng.} debugging) je proces pronalaženja i otklanjanja grešaka ili 
 nedostataka koji sprečavaju tačnu operaciju računarskog softvera ili sistema. Kvar se 
-obično otkriva jer se program neočekivano ponaša. Da bi se pronašao uzrok kvara, 
+obično otkriva, jer se program neočekivano ponaša. Da bi se pronašao uzrok kvara, 
 ključno je objasniti zašto dolazi do takvog ponašanja. Debagovanje ima tendenciju da 
 bude teže kada su različiti podsistemi čvrsto povezani, pošto promene u jednom mogu da 
-prouzrokuju nastanak bagova u drugom. \cite{debagovanje}	
+prouzrokuju nastanak bagova u drugom \cite{debagovanje}.	
 
 \vspace{4mm}
 
@@ -154,10 +154,10 @@ je pametnije moguće, po definiciji, niste dovoljno pametni da ga ispravite."\\
 \vspace{4mm}
 Debagovanje se sastoji iz četiri koraka:
 \begin{enumerate}
-\item uočavanje da postoji greška
-\item razumevanje greške
-\item lociranje greške
-\item ispravljanje greške
+\item Uočavanje da postoji greška
+\item Razumevanje greške
+\item Lociranje greške
+\item Ispravljanje greške
 \end{enumerate}
 
 \vspace{4mm}
@@ -174,7 +174,7 @@ Debagovanje je jedan od najkreativnijih i najintelektualnijih aspekata programir
 ali može biti i jedan od najstrašnijih. Odlike koje poseduju uspešni debageri su 
 kreativnost, logičko zaključivanje, odlučnost, kao i razmišljanje na drugačiji način.
 Veština debagovanja programera može biti bitan faktor u debagovanju, ali težina 
-debagovanja softvera najviše varira zbog složenosti sistema, takođe zavisi, u određenoj 
+debagovanja softvera najviše varira zbog složenosti sistema i takođe zavisi, u određenoj 
 meri, i od programskog jezika koji se koristi kao i dostupnih alata, kao što su 
 debageri. 
 
@@ -187,7 +187,7 @@ odvlači pažnju od pravog zadatka.
 
 Suprotno tome, sa grafičkim alatima za uklanjanje bagova sve što moramo da uradimo kako bismo 
 ispitali vrednost promenljive je da pomerimo miš do instance te promenljive u kodu i biće
-prikazana njena trenutna vrednost. Pored ovoga, debageri pružaju još dosta razloga da ih koristimo.\cite{art_debugging}
+prikazana njena trenutna vrednost. Pored ovoga, debageri pružaju još dosta razloga da ih koristimo\cite{art_debugging}.
 
 \subsection{Debager}
 \label{subsec:debager}
@@ -197,11 +197,11 @@ pokrene izabrana grupa instrukcija (simulator grupe instrukcija). Simulator grup
 na određenim tačkama programa ukoliko su određeni uslovi ispunjeni.
 Obično se programi koji se prevode u režimu za debagovanje
 sporije izvršavaju nego kada se isti program izvršava u normalnom režimu rada čak i ako je 
-u pitanju rad na istom procesoru. \cite{debugger} Kada program usled baga ili netačnog podatka ne može da 
-nastavi normalno sa radom, debager pokazuje lokaciju problema u originalnom kodu, takođe
+u pitanju rad na istom procesoru\cite{debugger}.  Kada program usled baga ili netačnog podatka ne može da 
+nastavi normalno sa radom, debager pokazuje lokaciju problema u originalnom kodu. Takođe
 debager nam omogućava da postavimo tačke posmatranja koje nam
-mogu reći u kom trenutku tokom izvođenja programa 
-određena promenljiva dobija sumnjivu vrednost, omogućava nam da
+mogu reći u kom trenutku tokom izvođenja programa vrednost
+određene promenljive postaje sumnjiva, omogućava nam da
 pratimo izvršavanje programa, da ga zaustavimo, restartujemo,
 postavimo mesta prekida, i da izmenimo vrednosti u memoriji. 
 
@@ -215,7 +215,7 @@ Međutim, njegova upotreba nije isključivo ograničena na GNU operativni sistem
 koji radi na mnogim Uniksolikim (eng. \textit{unixlike}) operativnim sistemima ali i na Microsoft Windows operativnim 
 sistemima i Mac OS X. Koristi se za mnoge programske jezike, uključujući
 Adu, C, C++, Objective-C, Free Pascal, Fortran, Javu.
-Poslednja realizovana verzija alata GNU GDB u vreme pisanje ovog rada je 9.1. \cite{sourceware}
+Poslednja realizovana verzija alata GNU GDB u vreme pisanje ovog rada je 9.1\cite{sourceware}. 
 
 Jedna od specifičnosti GNU debagera, pored svoje standardne namene, jeste da omogućava i 
 pronalaženje, analiziranje i otklanjanje grešaka u programima koji se izvršavaju na računarima drugih 
@@ -279,8 +279,8 @@ To uspevamo narednim komandama: \\
 od vrha steka. \newline 
 \indent GDB komanda \textbf{up} vodi do narednog roditeljskog stek frejma, dok komanda \textbf{down} 
 vodi u suprotnom smeru. Navedene operacije mogu biti veoma korisne, jer vrednosti lokalnih 
-promenljivih u nekim od ranijih poziva mogu dati rešenje o tome šta je tačno izazvalo bag\cite{art_debugging}. 
-GDB komanda \textbf{backtrace} pokazuje ceo stek tj. celu kolekciju stek frejmova koja trenutno postoji na steku.
+promenljivih u nekim od ranijih poziva mogu dati rešenje o tome šta je tačno izazvalo bag. 
+GDB komanda \textbf{backtrace} pokazuje ceo stek tj. celu kolekciju stek frejmova koja trenutno postoji na steku\cite{art_debugging}.
 
 Neke od najbitnijih komandi GDB-a date su u dodatku u tabeli \ref{tab:tabelaKonzola}, dok se više informacija
 može naći na \url{http://www.yolinux.com/TUTORIALS/GDB-Commands.html\#GDB\_COMMAND\_LINE\_ARGS},
@@ -311,7 +311,7 @@ Jedan način uspostavljanja komunikacije za debagovanje udaljenog uređaja je kr
 Opisani koncept koristi KGDB za debagovanje Linux jezgra na nivou izvornog koda. Velika prednost KGDB-a 
 je u tome što programeri koji razvijaju jezgro mogu debagovati jezgro na sličan način kao što se 
 debaguje bilo koja druga programska aplikacija. Moguće je postavljati tačke zaustavljanja u kodu jezgra, 
-prolaziti korak po korak kroz kod, ispitivati vrednosti promenljivih.\cite{kgd}
+prolaziti korak po korak kroz kod, ispitivati vrednosti promenljivih\cite{kgd}.
 
 Alternativno, može se koristiti GNU GDB server (\textit{eng.} gdbserver) za udaljeno debagovanje 
 programa bez potrebe da se bilo šta menja na obe strane komunikacije. GDB server nije u potpunosti 
@@ -357,19 +357,19 @@ identično kao i iz konzole, s obzirom da program sadrži terminal u sebi za isp
 lakši pregled informacija od značaja, kao i prikaz samog izvornog koda, koji se kod konzolnog korišćenja 
 dobija zastavicom -\phantom{}-tui.
 
-Grafičko okruženje je podeljeno u nekoliko celina. Najupečatljivija je celina u kojoj se nalazi učitani kod. 
+Grafičko okruženje je podeljeno u nekoliko celina. Najupečatljivija je celina u kojoj se nalazi učitani kod (slika \ref{fig:gdbgui}.3). 
 U njoj se postavljaju tačke prekida, klikom kursora na broj linije, a na isti način i uklanjaju.
-Sa desne strane se nalazi nekoliko padajućih menija, koji predstavljaju prikaz odredjenih informacija 
-u datom trenutku vremena. Tako se tu mogu naći informacije o niti u kojoj se nalazimo, lokalnim promenljivama, 
-registrima i ostalo. Iznad ove dve celine, nalazi se deo za kontrolisanje programa. Sačinjen je od prostora
+Sa desne strane se nalazi nekoliko padajućih menija, koji predstavljaju prikaz određenih informacija 
+u datom trenutku vremena(slika \ref{fig:gdbgui}.4). Tako se tu mogu naći informacije o niti u kojoj se nalazimo, lokalnim promenljivama, 
+registrima i ostalo. Iznad ove dve celine, nalazi se deo za kontrolisanje programa(slika \ref{fig:gdbgui}.2). Sačinjen je od prostora
 za unos putanje do programa, koji će debager koristiti, a on će biti učitan u program klikom na dugme 
-\textit{Load Binary}. Sa desne strane se nalazi nekoliko dugmića za kontrolu izvršavanja programa.
+\textit{Load Binary}(slika \ref{fig:gdbgui}.1). Sa desne strane se nalazi nekoliko dugmića za kontrolu izvršavanja programa.
 Tu se nalaze naredbe za ponovno učitavanje programa, izvršavanje do naredne tačke prekida, obustavljanje
 programa, prelazak na sledeću instrukciju, na sledeći poziv funkcije, vraćanja nazad iz funkcije, kao i prelazak
-na sledeću mašinsku instrukciju sa ili bez poziva funkcije. Za one koji su navikli da rade iz konzole, tu se nalazi 
-i terminal. Na slici \ref{fig:gdbgui} je prikazan sam izgled programa.
+na sledeću mašinsku instrukciju sa ili bez poziva funkcije. Za one koji su navikli da rade iz konzole(slika \ref{fig:gdbgui}.5), tu se nalazi 
+i terminal(slika \ref{fig:gdbgui}.6). Na slici \ref{fig:gdbgui} je prikazan sam izgled programa.
 
-Pokretanje debagovanja je, kao i kroz konzolu, komandom \textit{run}. Nadalje korisnik sam bira da li će 
+Pokretanje debagovanja je, kao i kroz konzolu, komandom \textbf{run}. Nadalje korisnik sam bira da li će 
 upravljati debagerom kroz konzolu, uz pomoć komandi datih u tabeli \ref{tab:tabelaKonzola}, ili kroz grafički interfejs.
 
 \begin{figure}[h!]
@@ -385,9 +385,9 @@ upravljati debagerom kroz konzolu, uz pomoć komandi datih u tabeli \ref{tab:tab
 
 Qt Creator je prenosivo radno okruženje koje je pravljeno prevashodno za Qt radni okvir (eng. \textit{framework}).
 Kako je i sam Qt prenosiv kako među različitim vidovima arhitektura, tako i među samim sistemima, Qt Creator
-mora da podržava različite prevodioce i debagere koje ti debageri koriste. Gnu Debager je podrazmevani debager
+mora da podržava različite prevodioce i debagere koje ti prevodioci koriste. GNU debager je podrazumevani debager
 ukoliko se koristi GCC prevodilac na Linux-u, Unix-u, Windows-u u kombinaciji sa MinGW-om, dok je na macOS-u
-eksperimentalne prirode. \cite{QT}
+eksperimentalne prirode\cite{QT}. 
 
 Sam Qt Creator podržava neki vid statičke analize koda, tako da u toku kreiranja koda programer može da 
 uvidi neke moguće greške, kao što su nekompatibilnost tipova koji se koriste, izlaženje izvan granica niza (vektora) 
@@ -420,17 +420,16 @@ int main()
 }
 \end{lstlisting}
 
-Za početak, postavljanje tačaka prekida. Vrši se skoro isto kao i kod gdbgui-a, jedina je razlika što kod Qt Creator-a
-se ne klikće na sam broj linije, već malo levo od broja, te se tu prikazuje kružić koji označava da je
+Za početak, postavljanje tačaka prekida. Vrši se skoro isto kao i kod gdbgui-a, jedina je razlika što se kod Qt Creator-a ne klikće na sam broj linije, već malo levo od broja, te se tu prikazuje kružić koji označava da je
 tačka prekida postavljena. Ona se može onemogućiti/omogućiti ili uređivati desnim klikom na kružić i biranjem određene funkcionalnosti.
 Slika \ref{fig:point_info} prikazuje informacije o samoj tački prekida kada se
-kursorom pozicioniramo na dobijeni kružić. Tu imamo informacije o internom id-u tačke prekida (\textit{Internal ID}) , koji se dodeljuje
-po redosledu postavljanja, ne po redosledu u kodu počevši od prve linije, stanje tačke prekida
+kursorom pozicioniramo na dobijeni kružić. Tu imamo informacije o internom id-u tačke prekida (\textit{Internal ID}), koji se dodeljuje
+po redosledu postavljanja, a ne po redosledu u kodu počevši od prve linije; zatim stanje tačke prekida
 odnosno da li je omogućena ili ne (\textit{State}), tip (\textit{Breakpoint Type}),
 fajl u kojem se nalazi (\textit{Marker File}), broj linije u fajlu na kojoj se nalazi (\textit{Marker Line})
 i broj koliko smo se puta zaustavili u toj tački prekida (\textit{Hit Count}).
 Na samom vrhu slike se nalazi žuta strelica. Ona se ne nalazi tu stalno, već samo u momentu kada je program 
-zaustavljen u toj tački i ispitujemo inormacije za nju.
+zaustavljen u toj tački i ispitujemo informacije za nju.
 
 \begin{figure}[h!]
 \begin{center}
@@ -440,7 +439,7 @@ zaustavljen u toj tački i ispitujemo inormacije za nju.
 \label{fig:point_info}
 \end{figure}
 
-Prilikom dodavanja tačaka prekida, one se dodaju u listu svih tačaka prekida. Za ovako jedonstavan program to 
+Prilikom dodavanja tačaka prekida, one se dodaju u listu svih tačaka prekida. Za ovako jednostavan program to 
 nije od krucijalnog značaja, dok kod kompleksijih programa može biti od velike pomoći. U tom spisku one se mogu uređivati, 
 omogućiti ili onemogućiti, brisati. Kako spisak izgleda, dato je slikom \ref{fig:points_list}.
 
@@ -454,10 +453,10 @@ omogućiti ili onemogućiti, brisati. Kako spisak izgleda, dato je slikom \ref{f
 
 Kada smo postavili tačke prekida, vreme je da pokrenemo program u debag režimu. To se može postići na više načina,
 najlakši od njih je klikom na \textbf{play} dugme u donjem levom uglu, sa nacrtanom bubom na sebi, moguće je i klikom na 
-dugme \textbf{F5} na tastaturi, kao i odlaskom u meni \textbf{Debug->Start Debugging} \cite{QT}.
+dugme \textbf{F5} na tastaturi, kao i odlaskom u meni \textbf{Debug->Start Debugging}\cite{QT}.
 \\
 
-Program pri izvršavanju staje na svaku od tačaka prekida i daje informacije o svim promenljivim iz tog dosega. 
+Program se pri izvršavanju zaustavlja na svakoj od tačaka prekida i daje informacije o svim promenljivim iz tog dosega. 
 Informacije o promenljivama su date slikom \ref{fig:points_res}. 
 Ono što primećujemo u tom delu je da GDB daje informacije o imenu promenljive, tipu i njenoj vrednosti, 
 ukoliko ju je moguće koristiti, u suprotnom stoji poruka \textbf{\textit{<not accessible>}}. Ta poruka nam šalje
@@ -488,7 +487,7 @@ Problem u ovom vidu ispisa jeste i što nema informacija gde se ta greška dogod
 \label{sec:poredjenje}
 Postoji mnogo debagera koji se mogu koristiti kako
 na različitim operativnim sistemima tako i za različite programske jezike. 
-Neke od stvari na koje treba obratiti paznju prilikom izbora debagera:
+Neke od stvari na koje treba obratiti pažnju prilikom izbora debagera:
 
 \begin{enumerate}
 \item Debagovanje u fazi razvoja \\
@@ -503,8 +502,8 @@ razumevanje detalja i načina na koji kod funkcioniše. Svaki od
 debagera podražava programera u ovom zadatku na drugačiji način.
 \item Debagovanje grešaka u višenitnim procesima\\
 Savremene aplikacije su višenitni i višeprocesni sistemi. 
-Potraga za uzrokom greške u mnogim slučajevima liči na traženje igle
-u plastu sena. Posebno višenitne aplikaje zahtevaju veliko znanje
+Potraga za uzrokom greške u mnogim slučajevima liči na traženje "igle
+u plastu sena". Posebno višenitne aplikacije zahtevaju veliko znanje
 programera o funkcionisanju celog sistema.\cite{tools} 
 Srećom, neki alati omogućavaju pregledanje pojedinačnih niti.
 \item Da li program za otklanjanje grešaka brzo i lako šalje detaljne informacije o otkrivenim greškama?
@@ -516,13 +515,13 @@ LLDB je program za otklanjanje grešaka koji se koristi u LLVM
 (\textit{eng.} Low Level Virtual Machine) projektima. To je besplatan softver sa 
 otvorenim kodom (\textit{eng.} open source) pod licencom 
 Univerziteta Ilionis / NCA Open Source Licence. Napravljen je kao 
-skup komponenata za višekratnu upotrebu. \cite{lldb}
+skup komponenata za višekratnu upotrebu\cite{lldb}. 
 
 LLDB je napravljen od strane LLVM razvojne grupe dok je GDB 
 realizacija GNU projekta. Druga razlika je u tome što je LLDB 
 pisan u C++-u, a GDB u C-u. Što se operativnih sistema tiče, LLDB 
 radi na macOS i386 i x86-64, Linux-u,  FreeBSD-u, Windows-u, 
-dok je GDB prenosiv program za otklanjanje gešaka koji radi na 
+dok je GDB prenosiv program za otklanjanje grešaka koji radi na 
 mnogim UNIX sistemima i Windows-u. Jedna od glavnih razlika 
 između ova dva programa predstavljaju programski jezici u kojima 
 se koriste. LLDB može biti koršćen da otkloni greške u C, Objective 
@@ -530,7 +529,7 @@ C i C++ programima, dok se GDB može koristiti za jezike  Ada, C,
 C++, Objective C, Pascal, FORTRAN i Go.
 
 Iako je veliki deo komadi sličan, postoje razlike u nekim od 
-najčešće korišćenih \cite{lldb}. Razlike su date u tabeli \ref{tab:tabela1}:
+najčešće korišćenih\cite{lldb}. Razlike su date u tabeli \ref{tab:tabela1}:
 
 
 \begin{table}[h!]
@@ -561,12 +560,12 @@ Izlistaj glavnu izvršnu biblioteku i sve zavisne & info shared    & image list 
 \label{subsec:valgrind}
 Valgrind je programski alat za pronalaženje grešaka u memoriji, otkrivanja curenja memorije i 
 profajliranje. To je besplatan softver, otvorenog koda koji je pod GNU General Public licencom. 
-Uz njega dolazi nekoliko alata. Osnovni i njaviše korišćen je Memcheck, koji može da otkrije i  
+Uz njega dolazi nekoliko alata. Osnovni i najviše korišćen je Memcheck, koji može da otkrije i  
 prijavi sledeće vrste grešaka u memoriji: korišćenje neinicijalizovane memorije, čitanje/pisanje u 
 memoriju nakon što je oslobođena, čitanje/pisanje na kraj alociranog bloka memorije, 
 curenje memorije i  mnoge druge. Valgrind će greške koje se teško pronalaze naći lako. Vrlo je 
 temeljit. Iskustvo programera pokazuje da će otklanjanje svih grešaka koje Valgrind pronađe 
-uštedeti veme na duže staze. Ponaša se poput virtualnog x86 prevodioca, pa će program raditi 10 
+uštedeti vreme na duže staze. Ponaša se poput virtualnog x86 prevodioca, pa će program raditi 10 
 do 30 puta sporije od uobičajenog \cite{hpc}.\\
 
 Kakva je razlika između Valgrind-a i GDB-a?
@@ -575,18 +574,18 @@ Kakva je razlika između Valgrind-a i GDB-a?
 \item[•]GDB nam dozvoljava da vidimo šta se dešava unutar programa dok on radi;
 \item[•]Valgring nam neće dozvoliti da interaktivno prolazimo kroz program;
 \item[•]GDB ne proverava da li se koriste neinicijalizovane vrednosti ili je preplavljena dinamička memorija;
-\item[•]I GDB i Valgrind će pokazati broj linije u kojoj se desio segmentation fault;
-\item[•]Valgrind često pokazuje i uzrok segfault-a;
+\item[•]I GDB i Valgrind će pokazati broj linije u kojoj se desio Segmentation fault;
+\item[•]Valgrind često pokazuje i uzrok  Segmentation fault-a;
 \item[•]Često se greške pronalaze i ispravljaju brže koristeći Valgrind nego GDB. \cite{hpc}
 \end{enumerate}
 
 \section{Zaključak}
 \label{sec:zakljucak}
 
-Kao što smo već pomenuli, u procesu programiranja često dolazi do pojave bagova, pa se tako suočavamo i sa procesom njihovog otklanjanja, zbog toga moramo naučiti da nam proces njihovog traženja i odstranjivanja ne oduzima mnogo vremena, ni energije. Nekada je lako prevideti nešto u kodu, zaboraviti neku trivijalnu stvar ili jednostavno napraviti neku sitnu grešku koja nas može koštati mnogo vremena provedenog gledajući u kod, ispitivajući pogrešne pretpostavke. U ovakvim slučajevima korišćenje debagera nam može uštedeti dosta vremena, ali i živaca. To što nezanemarljiv broj programera izbegava korišćenje alata za debagovanje, jer misle da je učenje korišćenja istih previše komplikovano ili da će im bespotrebno oduzeti vreme, nam govori da oni nisu dovoljno upućeni u mogućnosti i prednosti rada sa debagerom.
+U procesu programiranja često dolazi do pojave bagova, pa se tako suočavamo i sa procesom njihovog otklanjanja. Zbog toga moramo naučiti da nam proces njihovog traženja i odstranjivanja ne oduzima mnogo vremena, ni energije. Nekada je lako prevideti nešto u kodu, zaboraviti neku trivijalnu stvar ili jednostavno napraviti neku sitnu grešku koja nas može koštati mnogo vremena provedenog gledajući u kod, ispitivajući pogrešne pretpostavke. U ovakvim slučajevima korišćenje debagera nam može uštedeti dosta vremena, ali i živaca. To što nezanemarljiv broj programera izbegava korišćenje alata za debagovanje, jer misle da je učenje korišćenja istih previše komplikovano ili da će im bespotrebno oduzeti vreme, govori da oni nisu dovoljno upućeni u mogućnosti i prednosti rada sa debagerom.
 
-Snagu gdb-a predstavljaju njegove karakteristike, mogućnost da se primeni na mnogim platformamama kao i u 
-stepenu do koga njegovo ponašanje može da se prilagodi spečificnim zahtevima.  \cite{gnu}
+Snagu GDB-a predstavljaju njegove karakteristike, mogućnost da se primeni na mnogim platformama kao i
+stepen do koga njegovo ponašanje može da se prilagodi specifičnim zahtevima\cite{gnu}.  
 
 
 \addcontentsline{toc}{section}{Literatura}
