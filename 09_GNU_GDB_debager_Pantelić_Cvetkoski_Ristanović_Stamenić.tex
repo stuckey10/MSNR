@@ -76,7 +76,7 @@ mi16177@alas.matf.bg.ac.rs}
 
 \abstract{
 Danas je teško zamisliti da bismo mogli napraviti bilo koji značajan projekat bez korišćenja
-naprednih alata za pronalaženje grešaka. U narednom tekstu čitalac će se upoznati sa terminom "debagovanje", 
+naprednih alata za pronalaženje grešaka. U narednom tekstu čitalac će se upoznati sa terminom \textbf{debagovanje}, 
 specifičnostima GDB-a, načinom upravljanja i njegovim korišćenjem u razvojnim okruženjima. 
 Takođe, napravljena je paralela između GDB-a i drugih popularnih debagera.
 }
@@ -181,7 +181,7 @@ debageri.
 
 Klasično debagovanje se zasniva na tehnici praćenja koda korišćenjem funkcije za ispis, tako što 
 ispisujemo vrednosti promenljivih. Pre svega, ovaj način podrazumeva konstantno pozivanje funkcije za 
-ispis, rekompajliranje i pokretanje programa, analize dobijenog izlaza i konačno uklanjanje 
+ispis, rekompajliranje i pokretanje programa, analizu dobijenog izlaza i konačno uklanjanje 
 poziva funkcije za ispis kada uspemo da popravimo bag. Navedeni koraci se ponavljaju svaki put 
 kada otkrijemo novi bag. Ovaj način debagovanja oduzima previše vremena, stvara umor i najvažnije
 odvlači pažnju od pravog zadatka.
@@ -462,8 +462,8 @@ Program pri izvršavanju staje na svaku od tačaka prekida i daje informacije o 
 Informacije o promenljivama su date slikom \ref{fig:points_res}. 
 Ono što primećujemo u tom delu je da GDB daje informacije o imenu promenljive, tipu i njenoj vrednosti, 
 ukoliko ju je moguće koristiti, u suprotnom stoji poruka \textbf{\textit{<not accessible>}}. Ta poruka nam šalje
-informaciju da tu promenljivu ne bi trebalo koristiti u tom delu koda. U našem primeru, u liniji 17 smo pokazivač "poništili"  
-i on više nije validan, što nam četvrta tačka prekida i govori, ali u toj liniji pokušavamo da ispišemo vrednost prvog elementa
+informaciju da tu promenljivu ne bi trebalo koristiti u tom delu koda. U našem primeru, u liniji 17 smo pokazivač "poništili" {} i 
+on više nije validan, što nam četvrta tačka prekida i govori, ali u toj liniji pokušavamo da ispišemo vrednost prvog elementa
 tog vektora. Ta greška je prouzrokovala \textbf{Segmentation Fault}, dok nam GDB izbacuje obaveštenje dato slikom \ref{fig:signals}.
 Problem u ovom vidu ispisa jeste i što nema informacija gde se ta greška dogodila.
 
@@ -485,11 +485,11 @@ Problem u ovom vidu ispisa jeste i što nema informacija gde se ta greška dogod
 \end{figure}
 
 
-\section{Poređenje sa drugim popularnim dibagerima}
+\section{Poređenje sa drugim popularnim debagerima}
 \label{sec:poredjenje}
-Postoji mnogo dibagera koji se mogu koristiti kako
+Postoji mnogo debagera koji se mogu koristiti kako
 na različitim operativnim sistemima tako i za različite programske jezike. 
-Neke od stvari na koje treba obratiti paznju prilikom izbora dibagera:
+Neke od stvari na koje treba obratiti paznju prilikom izbora debagera:
 
 \begin{enumerate}
 \item Debagovanje u fazi razvoja \\
@@ -501,7 +501,7 @@ su naše promene uticale na ceo sistem.
 \item Efikasno praćenje toka vrednost\\
 Najvažniji faktor efikasnog lociranja uzroka greške predstavlja
 razumevanje detalja i načina na koji kod funkcioniše. Svaki od
-dibagera podražava programera u ovom zadatku na drugačiji način.
+debagera podražava programera u ovom zadatku na drugačiji način.
 \item Debagovanje grešaka u višenitnim procesima\\
 Savremene aplikacije su višenitni i višeprocesni sistemi. 
 Potraga za uzrokom greške u mnogim slučajevima liči na traženje igle
