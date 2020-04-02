@@ -94,7 +94,7 @@ poput poboljšanog razumevanja samog rada programa,
 vrsti grešaka koje najčešće pravimo, sticanja uvida o čitljivosti i
 kvalitetu sopstvenog koda. Uzimajući u obzir potrebe i raznolikost
 zadataka koje programer ima, teško je preceniti značaj odgovarajuće
-alatne podrške za programere\cite{seminarski=rad}. 
+alatne podrške za programere\cite{seminarski_rad}. 
 Na samom početku ovog rada
 upoznaćemo se sa bagovima i debagovanjem, a u daljem tekstu ćemo
 detaljnije opisati specifičnosti debagera GDB, kako i u kojim
@@ -175,14 +175,14 @@ ali može biti i jedan od najstrašnijih. Odlike koje poseduju uspešni debageri
 kreativnost, logičko zaključivanje, odlučnost, kao i razmišljanje na drugačiji način.
 Veština debagovanja programera može biti bitan faktor u debagovanju, ali težina 
 debagovanja softvera najviše varira zbog složenosti sistema i takođe zavisi, u određenoj 
-meri, i od programskog jezika koji se koristi kao i dostupnih alata, kao što su 
+meri, i od programskog jezika koji se koristi, kao i dostupnih alata, kao što su 
 debageri. 
 
 Klasično debagovanje se zasniva na tehnici praćenja koda korišćenjem funkcije za ispis, tako što 
 ispisujemo vrednosti promenljivih. Pre svega, ovaj način podrazumeva konstantno pozivanje funkcije za 
 ispis, rekompajliranje i pokretanje programa, analizu dobijenog izlaza i konačno uklanjanje 
 poziva funkcije za ispis kada uspemo da popravimo bag. Navedeni koraci se ponavljaju svaki put 
-kada otkrijemo novi bag. Ovaj način debagovanja oduzima previše vremena, stvara umor i najvažnije
+kada otkrijemo novi bag. Ovaj način debagovanja oduzima previše vremena, stvara umor i najvažnije,
 odvlači pažnju od pravog zadatka.
 
 Suprotno tome, sa grafičkim alatima za uklanjanje bagova sve što moramo da uradimo kako bismo 
@@ -192,7 +192,7 @@ prikazana njena trenutna vrednost. Pored ovoga, debageri pružaju još dosta raz
 \subsection{Debager}
 \label{subsec:debager}
 Debager ili alat za debagovanje je računarski program koji se koristi da testira i 
-debaguje druge programe ("meta" program), dajući mogućnost da se nezavisno 
+debaguje druge programe ("meta" {}program), dajući mogućnost da se nezavisno 
 pokrene izabrana grupa instrukcija (simulator grupe instrukcija). Simulator grupe instrukcija se zaustavlja
 na određenim tačkama programa ukoliko su određeni uslovi ispunjeni.
 Obično se programi koji se prevode u režimu za debagovanje
@@ -207,8 +207,9 @@ postavimo mesta prekida, i da izmenimo vrednosti u memoriji.
 
 \section{GNU debager (GDB)}
 \label{sec:GDB}
-GNU debager (\textit{eng.} GNU Debugger) kog često srećemo pod nazivom GDB je alat koji služi za pronalaženje 
-i otklanjanje grešaka tj. debagovanje. Originalno ga je razvijao Ričard Stalman 1986. godine, kao i mnoge druge programe za GNU sistem\cite{gdb}. Danas održavanjem upravlja GDB upravni odbor koga je formirala Fondacija 
+GNU debager (\textit{eng.} GNU Debugger), kog često srećemo pod nazivom GDB, je alat koji služi za pronalaženje 
+i otklanjanje grešaka tj. debagovanje. Originalno ga je razvijao Ričard Stalman 1986. godine, kao i mnoge druge programe 
+za GNU sistem\cite{gdb}. Danas održavanjem upravlja GDB upravni odbor koga je formirala Fondacija 
 slobodnog softvera (\textit{eng.} Free Software Foundation).
 GDB je pisan na programskom jeziku C i standardni je debager za GNU operativni sistem. 
 Međutim, njegova upotreba nije isključivo ograničena na GNU operativni sistem. To je prenosivi debager
@@ -273,7 +274,7 @@ i memorisanu lokaciju u programu odakle je izvršen poziv funkcije. Svaki
 put kada se pozove funkcija, stvara se novi stek frejm i postavlja se na
 sistemski stek. Na vrhu steka nalazi se funkcija koja se trenutno izvršava,
 a nakon završetka funkcije njen stek frejm se skida.
-Postoje funkcionalnosti uz pomoć kojih možemo da se "šetamo" kroz stek pozive.
+Postoje funkcionalnosti uz pomoć kojih možemo da se "šetamo" {}kroz stek pozive.
 To uspevamo narednim komandama: \\
 \indent Pozivanjem GDB komande \textbf{frame}, okviri na steku se numerišu od nule - počevši
 od vrha steka. \newline 
@@ -319,7 +320,7 @@ zamena za udaljene posrednike, jer nameće ograničenje da operativni sistemi kl
 moraju biti isti. Zapravo, sistem koji pokreće GDB server, da bi se povezao na udaljeni GNU debager, 
 takođe mora lokalno pokrenuti GNU debager. Dobra strana je da GDB server ne zahteva mnogo 
 resursa na udaljenom računaru, jer se ponaša kao omotač programa koji se debaguje. 
-Portabilniji je pa je rad sa GDB serverom na novom uređaju brže nego u drugom slučaju. 
+Portabilniji je, pa je rad sa GDB serverom na novom uređaju brže nego u drugom slučaju. 
 
 Način debagovanja GDB serverom sastoji se od klijentske strane koja traži usluge i serverske strane 
 koja usluge i resurse nudi. U udaljenom debagovanju klijent predstavlja korisnički računar sa koga se 
@@ -440,7 +441,7 @@ zaustavljen u toj tački i ispitujemo informacije za nju.
 \end{figure}
 
 Prilikom dodavanja tačaka prekida, one se dodaju u listu svih tačaka prekida. Za ovako jednostavan program to 
-nije od krucijalnog značaja, dok kod kompleksijih programa može biti od velike pomoći. U tom spisku one se mogu uređivati, 
+nije od krucijalnog značaja, dok kod kompleksnijih programa može biti od velike pomoći. U tom spisku one se mogu uređivati, 
 omogućiti ili onemogućiti, brisati. Kako spisak izgleda, dato je slikom \ref{fig:points_list}.
 
 \begin{figure}[h!]
@@ -460,7 +461,7 @@ Program se pri izvršavanju zaustavlja na svakoj od tačaka prekida i daje infor
 Informacije o promenljivama su date slikom \ref{fig:points_res}. 
 Ono što primećujemo u tom delu je da GDB daje informacije o imenu promenljive, tipu i njenoj vrednosti, 
 ukoliko ju je moguće koristiti, u suprotnom stoji poruka \textbf{\textit{<not accessible>}}. Ta poruka nam šalje
-informaciju da tu promenljivu ne bi trebalo koristiti u tom delu koda. U našem primeru, u liniji 17 smo pokazivač "poništili" {} i 
+informaciju da tu promenljivu ne bi trebalo koristiti u tom delu koda. U našem primeru, u liniji 17, smo pokazivač "poništili" {} i 
 on više nije validan, što nam četvrta tačka prekida i govori, ali u toj liniji pokušavamo da ispišemo vrednost prvog elementa
 tog vektora. Ta greška je prouzrokovala \textbf{Segmentation Fault}, dok nam GDB izbacuje obaveštenje dato slikom \ref{fig:signals}.
 Problem u ovom vidu ispisa jeste i što nema informacija gde se ta greška dogodila.
@@ -524,7 +525,7 @@ radi na macOS i386 i x86-64, Linux-u,  FreeBSD-u, Windows-u,
 dok je GDB prenosiv program za otklanjanje grešaka koji radi na 
 mnogim UNIX sistemima i Windows-u. Jedna od glavnih razlika 
 između ova dva programa predstavljaju programski jezici u kojima 
-se koriste. LLDB može biti koršćen da otkloni greške u C, Objective 
+se koriste. LLDB može biti korišćen da otkloni greške u C, Objective 
 C i C++ programima, dok se GDB može koristiti za jezike  Ada, C, 
 C++, Objective C, Pascal, FORTRAN i Go.
 
@@ -542,7 +543,7 @@ Pokretanje programa                              & run            & process laun
 Prikaz vrednosti u registrima                    & info registers & registers read                                                        \\
 \rowcolor[HTML]{C0C0C0} 
 Prikaz tačaka prekida                            & info breakpoints     & breakpoint list                                                       \\
-Izbrisi sve tačke prekida                        & delete         & breakpoint delete                                                     \\
+Izbriši sve tačke prekida                        & delete         & breakpoint delete                                                     \\
 \rowcolor[HTML]{C0C0C0} 
 Izbriši tačku prekida označenu sa broj           & delete (broj)  & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}breakpoint delete (broj)} \\
 Prikaz vrednosti svih lokalnih promenljivih      & info locals    & frame variable                                                        \\
@@ -572,7 +573,7 @@ Kakva je razlika između Valgrind-a i GDB-a?
 \begin{enumerate}
 \item[•]GDB je program za pronalaženje grešaka u kodu, Valgrind između ostalog proverava memoriju;
 \item[•]GDB nam dozvoljava da vidimo šta se dešava unutar programa dok on radi;
-\item[•]Valgring nam neće dozvoliti da interaktivno prolazimo kroz program;
+\item[•]Valgrind nam neće dozvoliti da interaktivno prolazimo kroz program;
 \item[•]GDB ne proverava da li se koriste neinicijalizovane vrednosti ili je preplavljena dinamička memorija;
 \item[•]I GDB i Valgrind će pokazati broj linije u kojoj se desio Segmentation fault;
 \item[•]Valgrind često pokazuje i uzrok  Segmentation fault-a;
@@ -614,12 +615,12 @@ delete broj-tačke-prekida & Brisanje tačke prekida sa određenim brojem \\ \hl
 disable broj-tačke-prekida | raspon & Isključivanje tačke prekida sa datim brojem ili više tačaka u nekom rasponu \\ \hline
 enable broj-tačke-prekida & Uključivanje tačke prekida sa određenim brojem \\ \hline
 continue | c & Nastavak izvršavanja do naredne tačke prekida \\ \hline
-finish & Dovršavanje izvršavanje započete funkcije \\ \hline
+finish & Dovršavanje izvršavanja započete funkcije \\ \hline
 step <broj-koraka> & Prelazak na narednu liniju koda, ili liniju za određen broj koraka udaljenu \\ \hline
 next <broj-koraka> & Izvršavanje naredne linije koda, ili narednih <broj-koraka> linija koda \\ \hline
 where & Prikaz trenutne pozicije u kodu, broj linije \\ \hline
 backtrace & Prikaz trenutne pozicije, ime funkcije, kojim putem se došlo do tog stanja\\ \hline
-<up|down><broj-okvira> & Pomeraj gore ili dule kroz stek okvire, za onoliko okvira koliko zadamo, ili jedan ako ne navedemo ništa \\ \hline
+<up|down><broj-okvira> & Pomeraj gore ili dole kroz stek okvire, za onoliko okvira koliko zadamo, ili jedan ako ne navedemo ništa \\ \hline
 \end{tabular}
 \label{tab:tabelaKonzola}
 \end{center}
