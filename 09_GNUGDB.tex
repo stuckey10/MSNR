@@ -1,0 +1,244 @@
+
+
+ % !TEX encoding = UTF-8 Unicode
+
+\documentclass[a4paper]{report}
+
+\usepackage[T2A]{fontenc} % enable Cyrillic fonts
+\usepackage[utf8x,utf8]{inputenc} % make weird characters work
+\usepackage[serbian]{babel}
+%\usepackage[english,serbianc]{babel}
+\usepackage{amssymb}
+
+\usepackage{color}
+\usepackage{url}
+\usepackage[unicode]{hyperref}
+\hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
+
+\newcommand{\odgovor}[1]{\textcolor{blue}{#1}}
+
+\begin{document}
+
+\title{GN GDB debager\\ \small{
+Kristina Pantelić, 91/2016, kristinapantelic@gmail.com 
+\\
+Ivana Cvetkoski, 65/2016, ivana.cvetkoski@gmail.com
+\\
+Bojana Ristanović, 45/2016, bojanaristanovic97@gmail.com
+\\
+Nikola Stamenić, 177/2016, nikola.stamenic@hotmail.com}}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{Uputstva}
+\emph{Prilikom predavanja odgovora na recenziju, obrišite ovo poglavlje.}
+
+Neophodno je odgovoriti na sve zamerke koje su navedene u okviru recenzija. Svaki odgovor pišete u okviru okruženja \verb"\odgovor", \odgovor{kako bi vaši odgovori bili lakše uočljivi.} 
+\begin{enumerate}
+
+\item Odgovor treba da sadrži na koji način ste izmenili rad da bi adresirali problem koji je recenzent naveo. Na primer, to može biti neka dodata rečenica ili dodat pasus. Ukoliko je u pitanju kraći tekst onda ga možete navesti direktno u ovom dokumentu, ukoliko je u pitanju duži tekst, onda navedete samo na kojoj strani i gde tačno se taj novi tekst nalazi. Ukoliko je izmenjeno ime nekog poglavlja, navedite na koji način je izmenjeno, i slično, u zavisnosti od izmena koje ste napravili. 
+
+\item Ukoliko ništa niste izmenili povodom neke zamerke, detaljno obrazložite zašto zahtev recenzenta nije uvažen.
+
+\item Ukoliko ste napravili i neke izmene koje recenzenti nisu tražili, njih navedite u poslednjem poglavlju tj u poglavlju Dodatne izmene.
+\end{enumerate}
+
+Za svakog recenzenta dodajte ocenu od 1 do 5 koja označava koliko vam je recenzija bila korisna, odnosno koliko vam je pomogla da unapredite rad. Ocena 1 označava da vam recenzija nije bila korisna, ocena 5 označava da vam je recenzija bila veoma korisna. 
+
+NAPOMENA: Recenzije ce biti ocenjene nezavisno od vaših ocena. Na osnovu recenzije ja znam da li je ona korisna ili ne, pa na taj način vama idu negativni poeni ukoliko kažete da je korisno nešto što nije korisno. Vašim kolegama šteti da kažete da im je recenzija korisna jer će misliti da su je dobro uradili, iako to zapravo nisu. Isto važi i na drugu stranu, tj nemojte reći da nije korisno ono što jeste korisno. Prema tome, trudite se da budete objektivni. 
+\chapter{Recenzent \odgovor{--- ocena:} }
+
+
+\section{O čemu rad govori?}
+% Напишете један кратак пасус у којим ћете својим речима препричати суштину рада (и тиме показати да сте рад пажљиво прочитали и разумели). Обим од 200 до 400 карактера.
+Rad prvenstveno govori o GDB debageru, načinu njegove upotrebe u konzolnim i grafičkim korisničkim okružennjima, poređenju sa drugim popularnim debagerima, osnovnim operacijama koje pruža korisnicima i metodama upravljanja samim debagerom. Na početku rada, dat je i kratak pregled o osnovnim pojmovima debagovanja i upoznavanje sa debagerom kao alatom za pronalaženje grešaka.
+
+\section{Krupne primedbe i sugestije}
+% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
+%````
+U poglavlju ``Uvod`` mislim da je dobar deo teksta bolje prebaciti kao uvod u poglavlje ``Debagovanje``, ovaj tekst zameniti tekstom koji će malo više zainteresovati čitaoca za temu rada a ne za temu debagovanja. 
+
+U poglavlju  ``Debagovanje`` umesto detaljnog objašnjavanja klasičnog načina debagovanja, u tom delu mogu se dodati i drugi načini debagovanja i ukratko se uporediti. Takodje, u poglavlju ``Debagovanje`` za rečenicu ``Odlike koje poseduju uspešni debageri su kreativnost, logičko zaključivanje...`` na prvi pogled stiče se utisak da se opisuje alat a ne čovek koji vrši debagovanje. Dalje, u poglavlju ``Debagovanje`` u pasusu koji počinje rečenicom ``Suprotno tome, sa grafičkim alatima za uklanjanje bagova...`` stiče se utisak da svi debageri koriste grafički korisnički interfejs i da svi imaju opisanu funkcionalnost, jer suprotno klasičnom načinu debagovanja je korišćenje debagera a ne debagera sa grafičkim korisničkim interfejsom. U poglavlju ``Debager``, rečenicu ``Kada program usled baga ili netačnog podatka ne može da nastavi normalno sa radom, debager pokazuje lokaciju problema u originalnom kodu`` treba preformulisati, jer nema svaki debager ovu funkcionalnost, zavisi od interfejsa debagera i podrške za konkretan debager.
+\odgovor{Umesto ‚‚debager`` dodatno je ‚‚napredniji debager``.}
+
+Mislim da je poglavlje ``Udaljeno debagovanje`` previše detaljno opisano i treba ga skratiti i napisati samo najbitnije odlike ovog načina debagovanja. \odgovor{Deo o udaljenom debagovanju je skraćen i jasnije napisan.} U poglavlju ``Grafičko okruženje gdbgui`` mislim da je preopširno opisan korisnički interfejs, umesto toga, možda bi bilo bolje opisati žašto je ovo okruženje dobro, po čemu se izdvaja od drugih i kada ga treba koristiti ili u kojim situacijama se najčeće koristi. Slično, za poglavlje ``GDB u QT Creator razvojnom okruženju``, mislim da je preopširno opisan način upotrebe GDB debagera u ovom okruženju, možda bi bilo bolje odgovoriti na pitanja napisana u prethodnoj rečenici, nepotrebno su opisane informacije koje sadrži tačka prekida jer postoji slika na kojoj se one vide, takodje slike ``4`` i ``5`` nalaze se u poglavlju ``6``, mislim da je bolje prebaciti ih iznad, jer nemaju veze sa poglavljem u kojem se nalaze.
+
+Tekst ispod poglavlja ``Poređenje sa drugim popularnim debagerima`` govori o stvarima na koje treba obratiti pažnju prilikom izbora debagera i nema veze sa naslovom poglavlja, možda je bolje ispod poglavlja ``Debager`` napraviti podpoglavlje sa ovim tekstom. Kod poređenja GDB debagera sa LLDB i Valgrind debagerom, možda ne bi bilo loše dodati tabelu na kojoj će biti prikazano poredjenje GDB debagera sa ostalim debagerima na primer po pitanju podrške za programske jezike, implementacije samih debagera, korisničkih interfejsa i slično, time se dobija na preglednosti. 
+
+Zaključak, govori o bagovima, debagovanju i zašto je debager koristan alat, a jako malo o GDB debageru, treba ga preformulisati tako da sumira sve pozitivne i negativne stvari vezane za GDB debager, dati čitaocu pregled situacija (na primer jezika, operativnih sistema, razvojnih okruženja) kada GDB pruža svoj maksimalni potencijal, ali i dati prostora čitaocu da sam odluči da li je GDB debager za njega.
+\section{Sitne primedbe}
+% Напишете своја запажања на тему штампарских-стилских-језичких грешки
+Nisam naišao na veliki broj štamparskih grešaka, ali posoji nekolicina koje sam zapazio. U poglavlju 3 u rečenici ``takođe zavisi, u određenoj meri, i od programskog jezika...`` ne treba pisati slovo ``i`` posle zareza. 
+\odgovor{Ispravljeno je u ``ali takođe, u određenoj meri, zavisi i od programskog jezika koji se koristi``}
+U poglavlju 3 u prvoj rečenici treba napraviti razmak ``meta program``.
+\odgovor{Ispravno je i "metaprogram", "meta-program", kao i "meta program", stoga ostavljeno je "metaprogram".} 
+U poglavlju 4.1.2 možda je lepše u zagradi napisati ``počevši od vrha steka`` umesto pisanja crtice, takodje u istom poglavlju treba napraviti razmak kod ``šetamo kroz stek pozive``.  
+\odgovor{Crtica je zamenjena zarezom, jer smatramo da tako lepše izgleda nego u zagradama, ali je konstatacija na mestu. Razmak nije pdf-u zbog latex-a, jer on tako ostavlja, ali je i to rešeno.}
+U poglavlju 5.1 jedna od rečenica glasi ``Tako se tu mogu naći..``, lepše je napisati ``Tu se mogu naći..``, na više mesta u ovom poglavlju nije napravljen razmak 
+na mestima gde je potrebno kao na primer ``Load Binary(slika 1.1)`` ili ``konzole(slika 1.5)``.
+\odgovor{Razmaci su rešeni, s obzirom na naknadno dodavanje tih delova, nije uočeno da nedostaju razmaci. \\Videćemo šta ćemo za deo pre toga, za tu rečenicu.}
+Globalno je možda lepše, kada referišemo na sliku, tu referencu staviti u zagradu, na primer (1) umesto 1. Stilovi pisanja su prilično dobro usklađeni.
+\odgovor{Ovo treba da se dogovorimo}
+
+\section{Provera sadržajnosti i forme seminarskog rada}
+% Oдговорите на следећа питања --- уз сваки одговор дати и образложење
+
+\begin{enumerate}
+\item Da li rad dobro odgovara na zadatu temu?\\
+Rad je u velikoj meri odgovorio na ključna pitanja vezana za ovu temu koja se nalaze u opisu teme. Potrebno je samo, po mom mišljenju, neke delove skratiti, a neke dopuniti kao što sam opisao u odeljku ``Krupne primedbe i sugestije``.
+
+\item Da li je nešto važno propušteno?\\
+Mislim da nije propuštena nijedna ključna komponenta, ali se seminarski može poboljšati u svakom slučaju.
+
+\item Da li ima suštinskih grešaka i propusta?\\
+Smatram da se za zaključak može reći da je prilično pogrešan i treba ga ispraviti, čitajući samo njega čitalac stiče utisak da rad govori o debagovanju i debagerima,
+a tema rada je GDB debager, slično važi i za uvod.
+\odgovor{Ovo treba da izmenimo}
+
+\item Da li je naslov rada dobro izabran?\\
+Naslov rada je dobro izabran i sadržaj je u velikoj meri usklađen sa njim. Izdvojio bih samo poglavlje ``6`` i tekst ispod njega, koji nema veze sa naslovom.
+\odgovor{I ovo}
+
+\item Da li sažetak sadrži prave podatke o radu?\\
+Sažetak daje prave podatke o radu i mislim da je ukratko opisao sve teme kojima se rad bavi.
+
+\item Da li je rad lak-težak za čitanje?\\
+Rad je pretežno lak za čitanje, osim u delovima gde se opisuje rad GDB debagera u QT Creator razvojnom okruženju, gdbgui i udaljeno debagovanje gde rad postaje suvoparan.
+
+\item Da li je za razumevanje teksta potrebno predznanje i u kolikoj meri?\\
+Za razumevanje teksta nije potrebno preveliko predznanje, jer je dosta pojmova detaljno objašnjeno u tekstu, ipak tekst se dosta bolje razume ako čitalac ima predznanja na temu debagovanja i rada sa debagerom. 
+
+\item Da li je u radu navedena odgovarajuća literatura?\\
+Literatura jeste dobro navedena sem reference 4 https://www.hpc-europa.org/. za koju nisam pronašao literaturu vezanu za rad. 
+Ostatak literature sadrzi dosta knjiga vezanaih za temu debagera sto je pohvalno. Određeni delovi korišćeni su iz literature o 
+debagovanju profesora Saše Malkova, bilo bi lepo, navesti i ovaj izvor literature.
+\odgovor{Bojana treba da reši hpc-europa, ako se ne varam ona je dodala to, a ja ne mogu da se snađem :D Baltazara (https://konkursiregiona.net/wp-content/uploads/2016/05/prof.-baltazar-253x300.jpg)
+treba da citiramo.}
+
+\item Da li su u radu reference korektno navedene?\\
+Sa reference pod rednim brojem 4, https://www.hpc-europa.org/. nisam pronašao podatke koji stoje u tekstu, ostale reference jesu dobro navedene.
+
+\item Da li je struktura rada adekvatna?\\
+Struktura rada jeste dobra, rad sadrži poglavlja i podpoglavlja, ima sažetak, uvod i zaključak, sadržaj i deo sa literaturom. Pohvalio bih to što se tabela najbitnih 
+komandi nalazi u dodatku, a ne u tekstu, rad je dosta pregledniji na ovaj način.
+
+\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\
+Rad sadrži slike kao i tabele, broj strana je zadovoljen kao i broj referenci. U skup referenci ukljceno je tri master rada kao i knjige na temu debagovanja.
+
+\item Da li su slike i tabele funkcionalne i adekvatne?\\
+Tabele i slike su u velikoj meri funkcionalne, samo nije bilo potrebno detaljno objašnjavati u tekstu sadržaje sa nekih slika. Sliku 1 bilo bi lepo povećati. \odgovor{Slika 1 je uvećana.}
+\end{enumerate}
+
+
+\section{Ocenite sebe}
+% Napišite koliko ste upućeni u oblast koju recenzirate: 
+% a) ekspert u datoj oblasti
+% b) veoma upućeni u oblast
+% c) srednje upućeni
+% d) malo upućeni 
+% e) skoro neupućeni
+% f) potpuno neupućeni
+% Obrazložite svoju odluku
+
+U oblast debagovanja i  debagera, mogu da kažem, da nisam preterano dobro upućen, rekao bih da sam srednje upućen. GDB debager, jesam koristio, ali vrlo malo. Za razumevanje rada, mislim da nije potrebno preveliko znanje iz ovih oblasti, stoga smatram da sam radi razumeo u potpunosti. Moje zamerke najviše su se odnosile na čitljivost i preglednost rada, kao i struktuiranost pojedinih celina, neke tehničke stvari koje sam uvideo kao greške već sam obrazložio, za ostale podatke napisane u tekstu, nisam dovoljno stručan da potvrdim ispravnost.   
+
+\chapter{Recenzent \odgovor{--- ocena:} }
+
+
+\section{O čemu rad govori?}
+
+% Напишете један кратак пасус у којим ћете својим речима препричати суштину рада (и тиме показати да сте рад пажљиво прочитали и разумели). Обим од 200 до 400 карактера.
+Ovaj rad prelazi opšte koncepte baga i debagovanja, nakon čega te iste koncepte prikazuje na GNU GDB debageru. Obrađuje njegovu osnovnu funkcionalnost, prednosti i mane, kao i podržane varijante grafičkih okruženja za debagovanje posredstvom GDB debagera. Nakon čega poredi njegovu funkcionalnost, portabilnost i prilagodljivost sa drugim debagerima i profajlerima.
+\section{Krupne primedbe i sugestije}
+
+% Напишете своја запажања и конструктивне идеје шта у раду недостаје и шта би требало да се промени-измени-дода-одузме да би рад био квалитетнији.
+\begin{enumerate}
+	\item U tekstu se navodi da Mac OS X nije uniksoliki operativni sistem, a u stvari jeste. Može donekle biti zbunjujući naziv jezgra "XNU - X Is not Unix" \ koji nije dodeljen zato što je operativni sistem neuniksolik.\\
+	\odgovor{Greška je ispravljena. Obrisan je Mac OS X iz pomenute rečenice, jer on spada u uniksolike operativne sisteme.}
+	\item Pri obradi QT Creator-a i njegovog okruženja za debagovanje je napomenuto da pri zaustavljanju programa nema nikakve indikacije gde se desila fatalna greška, što je netačno, jer je u svakom trenutku dostupan ceo stek sa pozivima funkcija sa trenutnim brojevima linija, kao i trenutno stanje promenjlivih, ovo će biti dostupnoi čak iako se ne postavi tačka zaustavljanja na mesto greške.
+	\odgovor{Ovo će biti rešeno, našao sam gde se to ispisuje, pošto prošli put taj prozor mi nije bio uključen.}
+           \item U C++ kodu iz listinga 1 ima sintaksička greška, kose crte za komentare su pogrešnom smeru.  \\
+	\odgovor{Rešena primedba, pogrešna strana je ostala zbog latex-a i oznake za novi red, pa je autor povučen time napravio grešku.}
+	\item Pri kraju se u sekciji "Poređenje sa drugim popularnim debagerima", GDB poredi sa VALGRIND-om, što u kontekstu podnaslova nema mnogo smisla, s obzirom da VALGRIND nije debager već skup alata za, pre svega, profajliranje. Čak i da se ograničimo na Memcheck, i on je isključivo memorijski debager, što po definiciji znači da služi za dosta različit skup problema od regularnih debagera, pa mi se čini da nije dobro porediti ih. Moje mišljenje je da treba ili obraditi drugi debager ili se pozabaviti pitanjem: "Kada treba koristiti debager, a kada profajler?"
+	\item Navedeno je da je DDD debager, sto stvara konfuziju u rečenici gde se istovremeno uvodi kao debager i kao softver koji podržava debagere, po meni je najbolje adresirati ga kao "grafički interfejs za debagere". \\
+	\odgovor{Naveden deo je preformulisan na sledeći način:  ``...zbog popularnosti grafičkih korisničkih interfejsa
+(\textit{eng.} GUI) razvijen je veliki broj GUI zasnovanih (\textit{eng.} GUI-based) debagera koji rade pod Unix sistemom. Većina njih su grafički interfejsi za debagere. Jedan od najpoznatijih grafičkih interfejsa za debagere je DDD (\textit{eng.} Data Display Debugger)``.} 
+	\item Referenca broj 4 u literaturi je dosta nekonkretna ili je pogrešno postavljena. Nisam uspeo na obezbeđenom linku da nađem navedene činjenice odnosno literaturu.
+    \odgovor{Kao i gore, hpc-europa moramo da rešimo}
+
+ 
+\end{enumerate}
+\section{Sitne primedbe}
+% Напишете своја запажања на тему штампарских-стилских-језичких грешки
+\begin{enumerate}
+		
+	\item Diskutabilno je korišćenje rečenice "jedno od najintelektualnijih aspekata programiranja"\ u 3. sekciji. U redu je naglasiti da zahteva razmišljanje "van kutije" i da je zbog toga potrebna određena doza kreativnosti, iskustva, i inteligencije, ali među velikim bogatstvom računarskih nauka, po mom mišljenju, ima mnogo fascinantnijih oblasti. Da se ne bi dolazilo u ovakve subjektivne konflikte, autori bi možda trebalo da izbegavaju subjektivne tvrdnje. \\
+	\odgovor{Rečenica je preformulisana: ``...zahteva od programera iskustvo, inteligenciju, razmišljanje ``van kutije``, 		sagledavanje problema sa različitih strana; ali može biti i jedan od najzahtevnijih aspekata programiranja``.}
+	\item "Veština debagovanja programera može biti bitan faktor u debagovanju" \ mnogo zvuči kao tautologija. \\
+	\odgovor{Rečenica je preformulisana: ``Iskustvo i veština debagovanja programera su bitni faktori u procesu debagovanja...``}
+	\item Štamparska greška na 11. strani, Veliki deo komadi $\rightarrow$ Veliki deo komandi
+	\odgovor{Rešeno}
+	\item Štamparska greška u sekciji 4.1.4, u prvom pasusu,  sprecifičnost $\rightarrow$ specifičnost
+	\odgovor{Rešeno}
+	\item Nisam nigde našao u literaturi navedenu podelu na početku 6. poglavlja. Ako jeste originalni deo teksa ovog rada, preporučujem da se napomene da je ovo na osnovu prethodnih zapažanja autora.
+\\
+ Neke od stvari na koje treba obratiti pažnju prilikom izbora debagera  $\rightarrow$  Na osnovu prethodnog teksta, neke od stvari na koje treba obratiti pažnju prilikom izbora debagera
+\\
+Ili pak ako nije originalno, da se doda izvor. 
+	\odgovor{Ovo treba da rešimo, ja iskreno ne znam je li neko sam pisao ili citirao, ali valjalo bi rešiti. \\
+Ni Kristina ne zna odakle je ovo, nije ona pisala.}
+\item Ni u jednom trenutku se ne pokazuje izgled GDB u terminalu. Bilo bi mnogo jasnije kako funkcionise GDB, posebno rad sa stekom, kad bi se ubacila barem 
+jedna slika programa pokrenutog sa terminalskom verzijom istog.\\
+	\odgovor{Mislim da je dobra ideja, samo da smislimo kako i gde}
+\end{enumerate}
+\section{Provera sadržajnosti i forme seminarskog rada}
+% Oдговорите на следећа питања --- уз сваки одговор дати и образложење
+
+\begin{enumerate}
+\item Da li rad dobro odgovara na zadatu temu?\\
+Da, tema je GDB debager, čiji svi aspekti su obrađeni u okviru rada.
+\item Da li je nešto važno propušteno?\\
+Sve neophodno je obrađeno, ali kada su u pitanju teme sa debagovanjem uvek je dobra ideja dati malo realniije ili barem raznolike primere koji će zaista dočarati čitaocu koliko je moćan dotični debager. Preporučujem da se konkretno doda primer gde se koristi stek poziva funkcija.
+\item Da li ima suštinskih grešaka i propusta?\\
+Osim krupnih primedbi u sekciji iznad smatram da nema propusta.
+\item Da li je naslov rada dobro izabran?\\
+Koristi zadatu ključnu reč u naslovu, što je odlično, jedino možda nije toliko primamljiv jer više zvuči kao naslov u udžbeniku.
+	\odgovor{Možda da promenimo, ali da ne budemo ovako "šaljivi"{} kao recenzent} 
+Možda bi bilo bolje nazvati ga "GNU GDB debager pod mikroskopom" \ ili nešto u sličnom duhu. 
+\item Da li sažetak sadrži prave podatke o radu?\\
+Da, sažeto, precizno i pravilno opisuje sadržaj rada.
+\item Da li je rad lak-težak za čitanje?\\
+Rad je izuzetno lak za čitanje. Nove informacije se uvode umereno, tako da čitalac ni u jednom trenutku nema potrebu da se vraća unatrag, tome doprinosi i što je stil pisanja vrlo pitak.
+\item Da li je za razumevanje teksta potrebno predznanje i u kolikoj meri?\\
+Za tekst je potrebno osnovno znanje C++ programskog jezika isključivo zbog jednog primera kao i elementarno znanje o kompajliranju i radu u terminalu.
+\item Da li je u radu navedena odgovarajuća literatura?\\
+Obe primedbe su navedene u večim i manjim primedbama. Jedna stavka u literaturi je diskutabilna, dok je u drugom slučaju tekst upitnog izvora. Ali osim toga su navedene sve potrebne stavke u literatur.
+\item Da li su u radu reference korektno navedene?\\
+U svim osim jednog gore navedenog slučaja, reference su pravilno iskorišćene. Navedene su na ispravnim mestima i uzete iz proverenih izvora.
+\item Da li je struktura rada adekvatna?\\
+Jeste, redosled obrađenih tema je vrlo logičan i prirodan. Svaki put kada uvodi koncept kreće od generalnog i ide ka konkretnom konceptu.
+\item Da li rad sadrži sve elemente propisane uslovom seminarskog rada (slike, tabele, broj strana...)?\\
+Da, autori su ispoštovali sve propisane uslove propisane za pisanje seminarskog rada.
+
+\item Da li su slike i tabele funkcionalne i adekvatne?\\
+Izbor korišćenja tabela je vrlo koristan jer bi u suprotnom prezentacija komandi bila nečitljiva. Slike jesu adekvatne, s tim što sam naveo u sitnim primedbama da fali slika GDB dok je pokrenut u terminalu. Takođe bih preporučio autorima da prošire sliku is QT creator-a na kojoj je prikazana greška, baš zbog razloga naveneom u krupnim primedbama.
+\end{enumerate}
+
+\section{Ocenite sebe}
+% Napišite koliko ste upućeni u oblast koju recenzirate: 
+% a) ekspert u datoj oblasti
+% b) veoma upućeni u oblast
+% c) srednje upućeni
+% d) malo upućeni 
+% e) skoro neupućeni
+% f) potpuno neupućeni
+% Obrazložite svoju odluku
+Veoma sam upućen u oblast. Radio sam sa GDB debagerom popriličnu količinu vremena i intenzivno sam koristio debagere i u QT kreatoru i u JetBrains orkuženjima, kao na primer CLion, IntelliJ, Pycharm i Android Studio. U navedenim okruženjima sam tražio i popravljao i svoje i tuđe greške raznovrsnih tipova.
+
+
+\chapter{Dodatne izmene}
+%Ovde navedite ukoliko ima izmena koje ste uradili a koje vam recenzenti nisu tražili. 
+
+\end{document}

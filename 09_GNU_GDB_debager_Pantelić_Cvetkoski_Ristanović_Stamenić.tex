@@ -170,12 +170,13 @@ Otklanjanje grešaka se razlikuje od testiranja. Debagovanje počinje
 nakon što je u softveru utvrđena greška, dok se testiranje koristi da bi
 se osiguralo da je program tačan.
 
-Debagovanje je jedan od najkreativnijih i najintelektualnijih aspekata programiranja, 
-ali može biti i jedan od najstrašnijih. Odlike koje poseduju uspešni debageri su 
+Debagovanje je jedan od najkreativnijih aspekata programiranja, zahteva od programera iskustvo,
+inteligenciju, razmišljanje ``van kutije``, sagledavanje problema sa različitih strana;  
+ali može biti i jedan od najzahtevnijih aspekata programiranja. Odlike koje poseduju uspešni debageri su 
 kreativnost, logičko zaključivanje, odlučnost, kao i razmišljanje na drugačiji način.
-Veština debagovanja programera može biti bitan faktor u debagovanju, ali težina 
-debagovanja softvera najviše varira zbog složenosti sistema i takođe zavisi, u određenoj 
-meri, i od programskog jezika koji se koristi, kao i dostupnih alata, kao što su 
+Iskustvo i veština debagovanja programera su bitni faktori u procesu debagovanja, ali težina 
+debagovanja softvera najviše varira zbog složenosti sistema, ali takođe, u određenoj meri,
+zavisi i od programskog jezika koji se koristi, kao i dostupnih alata, kao što su 
 debageri. 
 
 Klasično debagovanje se zasniva na tehnici praćenja koda korišćenjem funkcije za ispis, tako što 
@@ -192,13 +193,13 @@ prikazana njena trenutna vrednost. Pored ovoga, debageri pružaju još dosta raz
 \subsection{Debager}
 \label{subsec:debager}
 Debager ili alat za debagovanje je računarski program koji se koristi da testira i 
-debaguje druge programe ("meta" {}program), dajući mogućnost da se nezavisno 
+debaguje druge programe (``metaprogram``), dajući mogućnost da se nezavisno 
 pokrene izabrana grupa instrukcija (simulator grupe instrukcija). Simulator grupe instrukcija se zaustavlja
 na određenim tačkama programa ukoliko su određeni uslovi ispunjeni.
 Obično se programi koji se prevode u režimu za debagovanje
 sporije izvršavaju nego kada se isti program izvršava u normalnom režimu rada čak i ako je 
 u pitanju rad na istom procesoru\cite{debugger}.  Kada program usled baga ili netačnog podatka ne može da 
-nastavi normalno sa radom, debager pokazuje lokaciju problema u originalnom kodu. Takođe
+nastavi normalno sa radom, napredniji debager pokazuje lokaciju problema u originalnom kodu. Takođe
 debager nam omogućava da postavimo tačke posmatranja koje nam
 mogu reći u kom trenutku tokom izvođenja programa vrednost
 određene promenljive postaje sumnjiva, omogućava nam da
@@ -214,7 +215,7 @@ slobodnog softvera (\textit{eng.} Free Software Foundation).
 GDB je pisan na programskom jeziku C i standardni je debager za GNU operativni sistem. 
 Međutim, njegova upotreba nije isključivo ograničena na GNU operativni sistem. To je prenosivi debager
 koji radi na mnogim Uniksolikim (eng. \textit{unixlike}) operativnim sistemima ali i na Microsoft Windows operativnim 
-sistemima i Mac OS X. Koristi se za mnoge programske jezike, uključujući
+sistemima. Koristi se za mnoge programske jezike, uključujući
 Adu, C, C++, Objective-C, Free Pascal, Fortran, Javu.
 Poslednja realizovana verzija alata GNU GDB u vreme pisanje ovog rada je 9.1\cite{sourceware}. 
 
@@ -274,9 +275,9 @@ i memorisanu lokaciju u programu odakle je izvršen poziv funkcije. Svaki
 put kada se pozove funkcija, stvara se novi stek frejm i postavlja se na
 sistemski stek. Na vrhu steka nalazi se funkcija koja se trenutno izvršava,
 a nakon završetka funkcije njen stek frejm se skida.
-Postoje funkcionalnosti uz pomoć kojih možemo da se "šetamo" {}kroz stek pozive.
+Postoje funkcionalnosti uz pomoć kojih možemo da se "šetamo"{} kroz stek pozive.
 To uspevamo narednim komandama: \\
-\indent Pozivanjem GDB komande \textbf{frame}, okviri na steku se numerišu od nule - počevši
+\indent Pozivanjem GDB komande \textbf{frame}, okviri na steku se numerišu od nule, počevši
 od vrha steka. \newline 
 \indent GDB komanda \textbf{up} vodi do narednog roditeljskog stek frejma, dok komanda \textbf{down} 
 vodi u suprotnom smeru. Navedene operacije mogu biti veoma korisne, jer vrednosti lokalnih 
@@ -306,34 +307,26 @@ U dokumentaciji ova tri mehanizma se zajedničkim imenom nazivaju tačke zaustav
 
 GDB pruža mogućnost udaljenog debagovanja koji se koristi za debagovanje ugradnih uređaja, 
 uređaja na kojima se neposredno debagovanje ne može izvršiti ili debagovanje jezgra operativnog sistema. 
-Udaljeno debagovanje podrazumeva da se GDB izvršava na jednoj mašini, a program koji se debaguje na 
-drugoj mašini.
-Jedan način uspostavljanja komunikacije za debagovanje udaljenog uređaja je kreiranje udaljenog posrednika koji je specifičan za konkretnu arhitekturu računara koji se debaguje. Udaljen posrednik je programski kod koji se izvršava na udaljenom uređaju i omogućava komunikaciju sa GDB-om. Sprecifičnost ovog načina komunikacije je neophodnost pravljenja udaljenog posrednika pri svakom debagovanju. 
+Udaljeno debagovanje podrazumeva da se GDB izvršava na jednoj mašini, a program koji se debaguje na drugoj mašini.
+Jedan način uspostavljanja komunikacije za debagovanje udaljenog uređaja je kreiranje udaljenog posrednika koji je specifičan za konkretnu arhitekturu računara koji se debaguje. Udaljen posrednik je programski kod koji se izvršava na udaljenom uređaju i 
+omogućava komunikaciju sa GDB-om. Specifičnost ovog načina komunikacije je neophodnost pravljenja udaljenog posrednika pri svakom debagovanju. \\
 Opisani koncept koristi KGDB za debagovanje Linux jezgra na nivou izvornog koda. Velika prednost KGDB-a 
 je u tome što programeri koji razvijaju jezgro mogu debagovati jezgro na sličan način kao što se 
-debaguje bilo koja druga programska aplikacija. Moguće je postavljati tačke zaustavljanja u kodu jezgra, 
-prolaziti korak po korak kroz kod, ispitivati vrednosti promenljivih\cite{kgd}.
+debaguje bilo koja druga programska aplikacija. Moguće je postavljati tačke zaustavljanja u kodu jezgra, prolaziti korak po korak kroz kod, ispitivati vrednosti promenljivih\cite{kgd}.
 
 Alternativno, može se koristiti GNU GDB server (\textit{eng.} gdbserver) za udaljeno debagovanje 
 programa bez potrebe da se bilo šta menja na obe strane komunikacije. GDB server nije u potpunosti 
 zamena za udaljene posrednike, jer nameće ograničenje da operativni sistemi klijenta i servera 
-moraju biti isti. Zapravo, sistem koji pokreće GDB server, da bi se povezao na udaljeni GNU debager, 
-takođe mora lokalno pokrenuti GNU debager. Dobra strana je da GDB server ne zahteva mnogo 
-resursa na udaljenom računaru, jer se ponaša kao omotač programa koji se debaguje. 
-Portabilniji je, pa je rad sa GDB serverom na novom uređaju brže nego u drugom slučaju. 
-
-Način debagovanja GDB serverom sastoji se od klijentske strane koja traži usluge i serverske strane 
-koja usluge i resurse nudi. U udaljenom debagovanju klijent predstavlja korisnički računar sa koga se 
-debagovanje izvršava ka udaljenom računaru. Uz pomoć odgovarajućih protokola klijent se povezuje 
-sa GDB serverom pokrenutim na udaljenom računaru\cite{master_rad}. 
-
+moraju biti isti. 
+Način debagovanja GDB serverom sastoji se od klijentske strane (korisnički računar sa koga se 
+debagovanje izvršava ka udaljenom računaru) koja traži usluge i serverske strane 
+koja usluge i resurse nudi\cite{master_rad}. 
 
 \section{Upotreba GDB-a kroz grafički pristup}
 \label{subsec:gui}
 
 GDB je konzolni alat (pokreće se iz konzolne linije). Međutim, zbog popularnosti grafičkih korisničkih interfejsa
-(\textit{eng.} GUI) razvijen je veliki broj debagera sa grafičkim korisničkim okruženjem za Unix sisteme\cite{art_debugging}. 
-Jedan od najpoznatijih debagera sa GUI-em je DDD, koji podržava grafički prikaz za više debagera, među kojima je
+(\textit{eng.} GUI) razvijen je veliki broj GUI zasnovanih (\textit{eng.} GUI-based) debagera koji rade pod Unix sistemom. Većina njih su grafički interfejsi za debagere. Jedan od najpoznatijih grafičkih interfejsa za debagere je DDD (\textit{eng.} Data Display Debugger) \cite{art_debugging}. DDD podržava grafički prikaz za više debagera, među kojima je
 GDB, a pored njega i DBX, WDB, Ladebug, JDB, XDB. Sam DDD se više ne razvija, od 2011-e, zaključno sa verzijom 3.3.12. \cite{GNUOrg}
 Pored DDD-a, KDbg je još jedan vid grafičkog okruženja za GDB koji se više ne razvija. KDbg je bio namenjen
 Linux operativnim sistemima sa KDE grafičkim okruženjem. Jedan od trenutno aktuelnih grafičkig interfejsa jeste
@@ -361,21 +354,21 @@ dobija zastavicom -\phantom{}-tui.
 Grafičko okruženje je podeljeno u nekoliko celina. Najupečatljivija je celina u kojoj se nalazi učitani kod (slika \ref{fig:gdbgui}.3). 
 U njoj se postavljaju tačke prekida, klikom kursora na broj linije, a na isti način i uklanjaju.
 Sa desne strane se nalazi nekoliko padajućih menija, koji predstavljaju prikaz određenih informacija 
-u datom trenutku vremena(slika \ref{fig:gdbgui}.4). Tako se tu mogu naći informacije o niti u kojoj se nalazimo, lokalnim promenljivama, 
-registrima i ostalo. Iznad ove dve celine, nalazi se deo za kontrolisanje programa(slika \ref{fig:gdbgui}.2). Sačinjen je od prostora
+u datom trenutku vremena (slika \ref{fig:gdbgui}.4). Tako se tu mogu naći informacije o niti u kojoj se nalazimo, lokalnim promenljivama, 
+registrima i ostalo. Iznad ove dve celine, nalazi se deo za kontrolisanje programa (slika \ref{fig:gdbgui}.2). Sačinjen je od prostora
 za unos putanje do programa, koji će debager koristiti, a on će biti učitan u program klikom na dugme 
-\textit{Load Binary}(slika \ref{fig:gdbgui}.1). Sa desne strane se nalazi nekoliko dugmića za kontrolu izvršavanja programa.
+\textit{Load Binary} (slika \ref{fig:gdbgui}.1). Sa desne strane se nalazi nekoliko dugmića za kontrolu izvršavanja programa.
 Tu se nalaze naredbe za ponovno učitavanje programa, izvršavanje do naredne tačke prekida, obustavljanje
 programa, prelazak na sledeću instrukciju, na sledeći poziv funkcije, vraćanja nazad iz funkcije, kao i prelazak
-na sledeću mašinsku instrukciju sa ili bez poziva funkcije. Za one koji su navikli da rade iz konzole(slika \ref{fig:gdbgui}.5), tu se nalazi 
-i terminal(slika \ref{fig:gdbgui}.6). Na slici \ref{fig:gdbgui} je prikazan sam izgled programa.
+na sledeću mašinsku instrukciju sa ili bez poziva funkcije. Za one koji su navikli da rade iz konzole (slika \ref{fig:gdbgui}.5), 
+tu se nalazi i terminal (slika \ref{fig:gdbgui}.6). Na slici \ref{fig:gdbgui} je prikazan sam izgled programa.
 
 Pokretanje debagovanja je, kao i kroz konzolu, komandom \textbf{run}. Nadalje korisnik sam bira da li će 
 upravljati debagerom kroz konzolu, uz pomoć komandi datih u tabeli \ref{tab:tabelaKonzola}, ili kroz grafički interfejs.
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[scale=0.2]{gdbgui.png}
+\includegraphics[scale=0.3]{gdbgui.png}
 \end{center}
 \caption{gdbgui: 1) Load Binary 2) Dugmići za kontrolu 3) Kod 4) Informacije o programu u tačkama prekida 5) Konzola 6) Promt}
 \label{fig:gdbgui}
@@ -404,18 +397,18 @@ using namespace std;
 int main()
 {
 
-    string hello = "hello world";   \\prva tacka prekida
-    cout << hello;                  \\druga tacka prekida
+    string hello = "hello world";   //prva tacka prekida
+    cout << hello;                  //druga tacka prekida
 
     auto vec = new vector<int>{1,2,3,4,5,6,7,8,9,10};
 
     for(size_t i = 0; i < vec->size(); i++)
-        cout << vec->at(i);         \\treca tacka prekida
+        cout << vec->at(i);         //treca tacka prekida
 
     delete vec;
 
     for(size_t i = 0; i < vec->size(); i++){
-        cout << vec->at(i);         \\cetvrta tacka prekida
+        cout << vec->at(i);         //cetvrta tacka prekida
     }
 
 }
@@ -529,7 +522,7 @@ se koriste. LLDB može biti korišćen da otkloni greške u C, Objective
 C i C++ programima, dok se GDB može koristiti za jezike  Ada, C, 
 C++, Objective C, Pascal, FORTRAN i Go.
 
-Iako je veliki deo komadi sličan, postoje razlike u nekim od 
+Iako je veliki deo komandi sličan, postoje razlike u nekim od 
 najčešće korišćenih\cite{lldb}. Razlike su date u tabeli \ref{tab:tabela1}:
 
 
