@@ -8,6 +8,8 @@
 \usepackage{graphicx}
 \usepackage[table,xcdraw]{xcolor}
 \graphicspath{ {./Slike/} }
+\usepackage{float}
+\restylefloat{table}
 
 \usepackage[english,serbian]{babel}
 %\usepackage[english,serbianc]{babel} %ukljuciti babel sa ovim opcijama, umesto gornjim, ukoliko se koristi cirilica
@@ -283,10 +285,27 @@ od vrha steka. \newline
 vodi u suprotnom smeru. Navedene operacije mogu biti veoma korisne, jer vrednosti lokalnih 
 promenljivih u nekim od ranijih poziva mogu dati rešenje o tome šta je tačno izazvalo bag. 
 GDB komanda \textbf{backtrace} pokazuje ceo stek tj. celu kolekciju stek frejmova koja trenutno postoji na steku\cite{art_debugging}.
+Jedan primer ispisa greške, kao i stek poziva se može naći u  \ref{listingGreska}.
+
+
+\begin{lstlisting}[caption={Primer ispisa greške u konzoli},frame=single, label=listingGreska]
+(gdb) run
+Starting program: /home/user/Desktop/MSNR/a.out 
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000555555555918 in f () at msnr.cpp:18
+18	        cout << vec->at(i);
+
+(gdb) backtrace
+#0  0x0000555555555918 in f () at msnr.cpp:18
+#1  0x00005555555559be in main () at msnr.cpp:26
+\end{lstlisting}
+
 
 Neke od najbitnijih komandi GDB-a date su u dodatku u tabeli \ref{tab:tabelaKonzola}, dok se više informacija
 može naći na \url{http://www.yolinux.com/TUTORIALS/GDB-Commands.html\#GDB\_COMMAND\_LINE\_ARGS},
-kao i u MAN stranama Linux operativnih sistema.
+kao i u MAN stranama Linux operativnih sistema. 
+
 
 \subsubsection{Tačke zaustavljanja}
 \label{subsec:gdbtackezaustavljanja}
@@ -351,20 +370,22 @@ identično kao i iz konzole, s obzirom da program sadrži terminal u sebi za isp
 lakši pregled informacija od značaja, kao i prikaz samog izvornog koda, koji se kod konzolnog korišćenja 
 dobija zastavicom -\phantom{}-tui.
 
-Grafičko okruženje je podeljeno u nekoliko celina. Najupečatljivija je celina u kojoj se nalazi učitani kod (slika \ref{fig:gdbgui}.3). 
-U njoj se postavljaju tačke prekida, klikom kursora na broj linije, a na isti način i uklanjaju.
-Sa desne strane se nalazi nekoliko padajućih menija, koji predstavljaju prikaz određenih informacija 
-u datom trenutku vremena (slika \ref{fig:gdbgui}.4). Tako se tu mogu naći informacije o niti u kojoj se nalazimo, lokalnim promenljivama, 
-registrima i ostalo. Iznad ove dve celine, nalazi se deo za kontrolisanje programa (slika \ref{fig:gdbgui}.2). Sačinjen je od prostora
-za unos putanje do programa, koji će debager koristiti, a on će biti učitan u program klikom na dugme 
-\textit{Load Binary} (slika \ref{fig:gdbgui}.1). Sa desne strane se nalazi nekoliko dugmića za kontrolu izvršavanja programa.
-Tu se nalaze naredbe za ponovno učitavanje programa, izvršavanje do naredne tačke prekida, obustavljanje
-programa, prelazak na sledeću instrukciju, na sledeći poziv funkcije, vraćanja nazad iz funkcije, kao i prelazak
-na sledeću mašinsku instrukciju sa ili bez poziva funkcije. Za one koji su navikli da rade iz konzole (slika \ref{fig:gdbgui}.5), 
-tu se nalazi i terminal (slika \ref{fig:gdbgui}.6). Na slici \ref{fig:gdbgui} je prikazan sam izgled programa.
+Pojednostavljen prikaz gdbgui-a dat je slikom \ref{fig:gdbgui} uz smernice za šta koji deo služi.
+Mogućnosti koje poseduje alat gdbgui su sledeće \cite{n0where}: 
+\begin{enumerate}
+\item Debagovanje različitih programa u različitim karticama (eng. \textit{tab})
+\item Postavljanje/uklanjanje tačaka prekida
+\item Pregled steka ili niti
+\item Prelazak sa jednog stek okvira u drugi, kao i prelazak iz jedne niti u drugu
+\item Intuitivno istraživanje lokalnih promenljivih pri pauziranom programu
+\item Prelaskom preko promenljive u kodu dobija se njena vrednost
+\item Izračunavanje proizvoljnih izraza i plotovanje njihovih vrednosti kroz vreme
+\item Istraživanje memorije u heksadekadnoj/karakterskoj formi
+\item Pregled svih registara
+\item Istraživanje izvornog koda sa mogućnošću prelaska na određenu liniju
+\end{enumerate}
 
-Pokretanje debagovanja je, kao i kroz konzolu, komandom \textbf{run}. Nadalje korisnik sam bira da li će 
-upravljati debagerom kroz konzolu, uz pomoć komandi datih u tabeli \ref{tab:tabelaKonzola}, ili kroz grafički interfejs.
+
 
 \begin{figure}[h!]
 \begin{center}
@@ -386,95 +407,20 @@ eksperimentalne prirode\cite{QT}.
 Sam Qt Creator podržava neki vid statičke analize koda, tako da u toku kreiranja koda programer može da 
 uvidi neke moguće greške, kao što su nekompatibilnost tipova koji se koriste, izlaženje izvan granica niza (vektora) 
 i sličnih koje su uočljive u tom momentu. Nažalost, dosta grešaka ostaje neprimećeno. Tu nam pomaže debager,
-u ovom slučaju GDB, čija će upotreba, na nekom jednostavnijem nivou, biti prikazana kroz naredni kod. 
+u ovom slučaju GDB, čija će upotreba, na nekom jednostavnijem nivou, biti prikazana u dodatku \ref{upotrebaQT}. 
+QT creator se može koristiti u \textbf{Debug} režimu kako bi se ispitivalo stanje aplikacije u toku njenog izvršavanja,
+dok se sa samim debagerom može interagovati na više načina, između ostalog: \cite{QT} 
 
-\begin{lstlisting}[caption={Primer jednostavnog programa za prikaz rada GDB-a u Qt Creator-u},frame=single, label=simple]
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
-int main()
-{
-
-    string hello = "hello world";   //prva tacka prekida
-    cout << hello;                  //druga tacka prekida
-
-    auto vec = new vector<int>{1,2,3,4,5,6,7,8,9,10};
-
-    for(size_t i = 0; i < vec->size(); i++)
-        cout << vec->at(i);         //treca tacka prekida
-
-    delete vec;
-
-    for(size_t i = 0; i < vec->size(); i++){
-        cout << vec->at(i);         //cetvrta tacka prekida
-    }
-
-}
-\end{lstlisting}
-
-Za početak, postavljanje tačaka prekida. Vrši se skoro isto kao i kod gdbgui-a, jedina je razlika što se kod Qt Creator-a ne klikće na sam broj linije, već malo levo od broja, te se tu prikazuje kružić koji označava da je
-tačka prekida postavljena. Ona se može onemogućiti/omogućiti ili uređivati desnim klikom na kružić i biranjem određene funkcionalnosti.
-Slika \ref{fig:point_info} prikazuje informacije o samoj tački prekida kada se
-kursorom pozicioniramo na dobijeni kružić. Tu imamo informacije o internom id-u tačke prekida (\textit{Internal ID}), koji se dodeljuje
-po redosledu postavljanja, a ne po redosledu u kodu počevši od prve linije; zatim stanje tačke prekida
-odnosno da li je omogućena ili ne (\textit{State}), tip (\textit{Breakpoint Type}),
-fajl u kojem se nalazi (\textit{Marker File}), broj linije u fajlu na kojoj se nalazi (\textit{Marker Line})
-i broj koliko smo se puta zaustavili u toj tački prekida (\textit{Hit Count}).
-Na samom vrhu slike se nalazi žuta strelica. Ona se ne nalazi tu stalno, već samo u momentu kada je program 
-zaustavljen u toj tački i ispitujemo informacije za nju.
-
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[scale=0.7]{breakpoint_info.png}
-\end{center}
-\caption{Informacije o jednoj tački prekida}
-\label{fig:point_info}
-\end{figure}
-
-Prilikom dodavanja tačaka prekida, one se dodaju u listu svih tačaka prekida. Za ovako jednostavan program to 
-nije od krucijalnog značaja, dok kod kompleksnijih programa može biti od velike pomoći. U tom spisku one se mogu uređivati, 
-omogućiti ili onemogućiti, brisati. Kako spisak izgleda, dato je slikom \ref{fig:points_list}.
-
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[scale=0.7]{breakpoints_list.png}
-\end{center}
-\caption{Spisak tački prekida i neke dodatne informacije o njima}
-\label{fig:points_list}
-\end{figure}
-
-Kada smo postavili tačke prekida, vreme je da pokrenemo program u debag režimu. To se može postići na više načina,
-najlakši od njih je klikom na \textbf{play} dugme u donjem levom uglu, sa nacrtanom bubom na sebi, moguće je i klikom na 
-dugme \textbf{F5} na tastaturi, kao i odlaskom u meni \textbf{Debug->Start Debugging}\cite{QT}.
-\\
-
-Program se pri izvršavanju zaustavlja na svakoj od tačaka prekida i daje informacije o svim promenljivim iz tog dosega. 
-Informacije o promenljivama su date slikom \ref{fig:points_res}. 
-Ono što primećujemo u tom delu je da GDB daje informacije o imenu promenljive, tipu i njenoj vrednosti, 
-ukoliko ju je moguće koristiti, u suprotnom stoji poruka \textbf{\textit{<not accessible>}}. Ta poruka nam šalje
-informaciju da tu promenljivu ne bi trebalo koristiti u tom delu koda. U našem primeru, u liniji 17, smo pokazivač "poništili" {} i 
-on više nije validan, što nam četvrta tačka prekida i govori, ali u toj liniji pokušavamo da ispišemo vrednost prvog elementa
-tog vektora. Ta greška je prouzrokovala \textbf{Segmentation Fault}, dok nam GDB izbacuje obaveštenje dato slikom \ref{fig:signals}.
-Problem u ovom vidu ispisa jeste i što nema informacija gde se ta greška dogodila.
-
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[scale=0.5]{breakpoints_res.png}
-\end{center}
-\caption{Informacije o promenljivama u tačkama prekida}
-\label{fig:points_res}
-\end{figure}
-
-
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[scale=0.5]{signals.png}
-\end{center}
-\caption{Signal pri nepravilnom završavanju programa}
-\label{fig:signals}
-\end{figure}
+\begin{enumerate}
+\item Ići kroz program liniju po liniju ili instrukciju po instrukciju
+\item Zaustavljanjem tekućeg programa
+\item Postavljanjem tačaka prekida
+\item Ispitivanjem sadržaja steka
+\item Ispitivanjem i menjanjem sadržaja lokalnih i globalnih promenljivih
+\item Ispitivanjem i menjanjem registara i sadržaja memorije tekućeg programa
+\item Ispitivanjem spiska učitanih deljenih biblioteka
+\item Isključivanjem delova koda
+\end{enumerate}
 
 
 \section{Poređenje sa drugim popularnim debagerima}
@@ -590,7 +536,7 @@ stepen do koga njegovo ponašanje može da se prilagodi specifičnim zahtevima\c
 \section{Dodatak}
 \label{dodatak}
 
-\begin{table}[!h!]
+\begin{table}[H]
 \begin{center}
 \caption{Tabela nekih od najbitnijih komandi.}
 \begin{tabular}{|p{4cm}|p{6cm}|} \hline
@@ -618,5 +564,100 @@ backtrace & Prikaz trenutne pozicije, ime funkcije, kojim putem se došlo do tog
 \label{tab:tabelaKonzola}
 \end{center}
 \end{table}
+
+
+\section{Upotreba GDB-a u QT creator-u}
+\label{upotrebaQT}
+Samo debagovanje u QT creator-u će biti objašnjeno kroz naredni kod.
+
+\begin{lstlisting}[caption={Primer jednostavnog programa za prikaz rada GDB-a u Qt Creator-u},frame=single, label=simple]
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+
+    string hello = "hello world";   //prva tacka prekida
+    cout << hello;                  //druga tacka prekida
+
+    auto vec = new vector<int>{1,2,3,4,5,6,7,8,9,10};
+
+    for(size_t i = 0; i < vec->size(); i++)
+        cout << vec->at(i);         //treca tacka prekida
+
+    delete vec;
+
+    for(size_t i = 0; i < vec->size(); i++){
+        cout << vec->at(i);         //cetvrta tacka prekida
+    }
+
+}
+\end{lstlisting}
+
+Za početak, postavljanje tačaka prekida. Vrši se skoro isto kao i kod gdbgui-a, jedina je razlika što se kod Qt Creator-a ne klikće na sam broj linije,
+već malo levo od broja, te se tu prikazuje kružić koji označava da je
+tačka prekida postavljena. Ona se može onemogućiti/omogućiti ili uređivati desnim klikom na kružić i biranjem određene funkcionalnosti.
+Slika \ref{fig:point_info} prikazuje informacije o samoj tački prekida kada se
+kursorom pozicioniramo na dobijeni kružić. Tu imamo informacije o internom id-u tačke prekida (\textit{Internal ID}), koji se dodeljuje
+po redosledu postavljanja, a ne po redosledu u kodu počevši od prve linije; zatim stanje tačke prekida
+odnosno da li je omogućena ili ne (\textit{State}), tip (\textit{Breakpoint Type}),
+fajl u kojem se nalazi (\textit{Marker File}), broj linije u fajlu na kojoj se nalazi (\textit{Marker Line})
+i broj koliko smo se puta zaustavili u toj tački prekida (\textit{Hit Count}).
+Na samom vrhu slike se nalazi žuta strelica. Ona se ne nalazi tu stalno, već samo u momentu kada je program 
+zaustavljen u toj tački i ispitujemo informacije za nju.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.7]{breakpoint_info.png}
+\end{center}
+\caption{Informacije o jednoj tački prekida}
+\label{fig:point_info}
+\end{figure}
+
+Prilikom dodavanja tačaka prekida, one se dodaju u listu svih tačaka prekida. Za ovako jednostavan program to 
+nije od krucijalnog značaja, dok kod kompleksnijih programa može biti od velike pomoći. U tom spisku one se mogu uređivati, 
+omogućiti ili onemogućiti, brisati. Kako spisak izgleda, dato je slikom \ref{fig:points_list}.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.7]{breakpoints_list.png}
+\end{center}
+\caption{Spisak tački prekida i neke dodatne informacije o njima}
+\label{fig:points_list}
+\end{figure}
+
+Kada smo postavili tačke prekida, vreme je da pokrenemo program u debag režimu. To se može postići na više načina,
+najlakši od njih je klikom na \textbf{play} dugme u donjem levom uglu, sa nacrtanom bubom na sebi, moguće je i klikom na 
+dugme \textbf{F5} na tastaturi, kao i odlaskom u meni \textbf{Debug->Start Debugging}\cite{QT}.
+\\
+
+Program se pri izvršavanju zaustavlja na svakoj od tačaka prekida i daje informacije o svim promenljivim iz tog dosega. 
+Informacije o promenljivama su date slikom \ref{fig:points_res}. 
+Ono što primećujemo u tom delu je da GDB daje informacije o imenu promenljive, tipu i njenoj vrednosti, 
+ukoliko ju je moguće koristiti, u suprotnom stoji poruka \textbf{\textit{<not accessible>}}. Ta poruka nam šalje
+informaciju da tu promenljivu ne bi trebalo koristiti u tom delu koda. U našem primeru, u liniji 17, smo pokazivač "poništili" {} i 
+on više nije validan, što nam četvrta tačka prekida i govori, ali u toj liniji pokušavamo da ispišemo vrednost prvog elementa
+tog vektora. Ta greška je prouzrokovala \textbf{Segmentation Fault}, dok nam GDB izbacuje obaveštenje dato slikom \ref{fig:signals}.
+Problem u ovom vidu ispisa jeste i što nema informacija gde se ta greška dogodila, ali se ta informacija nalazi u drugom prostoru, pored 
+spiska svih tačaka prekida, sa informacijom u kojoj liniji je trenutno program, odnosno gde se zaustavio kao i koja funkcija je u pitanju i u kom fajlu.
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.5]{breakpoints_res.png}
+\end{center}
+\caption{Informacije o promenljivama u tačkama prekida}
+\label{fig:points_res}
+\end{figure}
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.5]{signals.png}
+\end{center}
+\caption{Signal pri nepravilnom završavanju programa}
+\label{fig:signals}
+\end{figure}
 
 \end{document}

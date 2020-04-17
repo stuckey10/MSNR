@@ -32,22 +32,24 @@ Nikola Stamenić, 177/2016, nikola.stamenic@hotmail.com}}
 
 \tableofcontents
 
-\chapter{Uputstva}
-\emph{Prilikom predavanja odgovora na recenziju, obrišite ovo poglavlje.}
+% \chapter{Uputstva}
+% \emph{Prilikom predavanja odgovora na recenziju, obrišite ovo poglavlje.}
+% 
+% Neophodno je odgovoriti na sve zamerke koje su navedene u okviru recenzija. Svaki odgovor pišete u okviru okruženja \verb"\odgovor", \odgovor{kako bi vaši odgovori bili lakše uočljivi.} 
+% \begin{enumerate}
+% 
+% \item Odgovor treba da sadrži na koji način ste izmenili rad da bi adresirali problem koji je recenzent naveo. Na primer, to može biti neka dodata rečenica ili dodat pasus. Ukoliko je u pitanju kraći tekst onda ga možete navesti direktno u ovom dokumentu, ukoliko je u pitanju duži tekst, onda navedete samo na kojoj strani i gde tačno se taj novi tekst nalazi. Ukoliko je izmenjeno ime nekog poglavlja, navedite na koji način je izmenjeno, i slično, u zavisnosti od izmena koje ste napravili. 
+% 
+% \item Ukoliko ništa niste izmenili povodom neke zamerke, detaljno obrazložite zašto zahtev recenzenta nije uvažen.
+% 
+% \item Ukoliko ste napravili i neke izmene koje recenzenti nisu tražili, njih navedite u poslednjem poglavlju tj u poglavlju Dodatne izmene.
+% \end{enumerate}
+% 
+% Za svakog recenzenta dodajte ocenu od 1 do 5 koja označava koliko vam je recenzija bila korisna, odnosno koliko vam je pomogla da unapredite rad. Ocena 1 označava da vam recenzija nije bila korisna, ocena 5 označava da vam je recenzija bila veoma korisna. 
+% 
+% NAPOMENA: Recenzije ce biti ocenjene nezavisno od vaših ocena. Na osnovu recenzije ja znam da li je ona korisna ili ne, pa na taj način vama idu negativni poeni ukoliko kažete da je korisno nešto što nije korisno. Vašim kolegama šteti da kažete da im je recenzija korisna jer će misliti da su je dobro uradili, iako to zapravo nisu. Isto važi i na drugu stranu, tj nemojte reći da nije korisno ono što jeste korisno. Prema tome, trudite se da budete objektivni. 
 
-Neophodno je odgovoriti na sve zamerke koje su navedene u okviru recenzija. Svaki odgovor pišete u okviru okruženja \verb"\odgovor", \odgovor{kako bi vaši odgovori bili lakše uočljivi.} 
-\begin{enumerate}
 
-\item Odgovor treba da sadrži na koji način ste izmenili rad da bi adresirali problem koji je recenzent naveo. Na primer, to može biti neka dodata rečenica ili dodat pasus. Ukoliko je u pitanju kraći tekst onda ga možete navesti direktno u ovom dokumentu, ukoliko je u pitanju duži tekst, onda navedete samo na kojoj strani i gde tačno se taj novi tekst nalazi. Ukoliko je izmenjeno ime nekog poglavlja, navedite na koji način je izmenjeno, i slično, u zavisnosti od izmena koje ste napravili. 
-
-\item Ukoliko ništa niste izmenili povodom neke zamerke, detaljno obrazložite zašto zahtev recenzenta nije uvažen.
-
-\item Ukoliko ste napravili i neke izmene koje recenzenti nisu tražili, njih navedite u poslednjem poglavlju tj u poglavlju Dodatne izmene.
-\end{enumerate}
-
-Za svakog recenzenta dodajte ocenu od 1 do 5 koja označava koliko vam je recenzija bila korisna, odnosno koliko vam je pomogla da unapredite rad. Ocena 1 označava da vam recenzija nije bila korisna, ocena 5 označava da vam je recenzija bila veoma korisna. 
-
-NAPOMENA: Recenzije ce biti ocenjene nezavisno od vaših ocena. Na osnovu recenzije ja znam da li je ona korisna ili ne, pa na taj način vama idu negativni poeni ukoliko kažete da je korisno nešto što nije korisno. Vašim kolegama šteti da kažete da im je recenzija korisna jer će misliti da su je dobro uradili, iako to zapravo nisu. Isto važi i na drugu stranu, tj nemojte reći da nije korisno ono što jeste korisno. Prema tome, trudite se da budete objektivni. 
 \chapter{Recenzent \odgovor{--- ocena:} }
 
 
@@ -64,6 +66,9 @@ U poglavlju  ``Debagovanje`` umesto detaljnog objašnjavanja klasičnog načina 
 \odgovor{Umesto ‚‚debager`` dodatno je ‚‚napredniji debager``.}
 
 Mislim da je poglavlje ``Udaljeno debagovanje`` previše detaljno opisano i treba ga skratiti i napisati samo najbitnije odlike ovog načina debagovanja. \odgovor{Deo o udaljenom debagovanju je skraćen i jasnije napisan.} U poglavlju ``Grafičko okruženje gdbgui`` mislim da je preopširno opisan korisnički interfejs, umesto toga, možda bi bilo bolje opisati žašto je ovo okruženje dobro, po čemu se izdvaja od drugih i kada ga treba koristiti ili u kojim situacijama se najčeće koristi. Slično, za poglavlje ``GDB u QT Creator razvojnom okruženju``, mislim da je preopširno opisan način upotrebe GDB debagera u ovom okruženju, možda bi bilo bolje odgovoriti na pitanja napisana u prethodnoj rečenici, nepotrebno su opisane informacije koje sadrži tačka prekida jer postoji slika na kojoj se one vide, takodje slike ``4`` i ``5`` nalaze se u poglavlju ``6``, mislim da je bolje prebaciti ih iznad, jer nemaju veze sa poglavljem u kojem se nalaze.
+\odgovor{Poglavlja o gdbgui-u i Qt Creator-u su izmenjena tako da ne govore o samom korišćenju i objašnjavanju interfejsa, već koje mogućnosti poseduje dati alat. Slike 4 i 5 su zajedno
+sa upotrebom alata Qt Creator prebačene u dodatak, ali su se pre toga nalazile u poglavlju 6 iz razloga što sam \LaTeX {} raspoređuje figure tako da celokupni dokument zauzme što manje 
+prostora.}
 
 Tekst ispod poglavlja ``Poređenje sa drugim popularnim debagerima`` govori o stvarima na koje treba obratiti pažnju prilikom izbora debagera i nema veze sa naslovom poglavlja, možda je bolje ispod poglavlja ``Debager`` napraviti podpoglavlje sa ovim tekstom. Kod poređenja GDB debagera sa LLDB i Valgrind debagerom, možda ne bi bilo loše dodati tabelu na kojoj će biti prikazano poredjenje GDB debagera sa ostalim debagerima na primer po pitanju podrške za programske jezike, implementacije samih debagera, korisničkih interfejsa i slično, time se dobija na preglednosti. 
 
@@ -158,7 +163,8 @@ Ovaj rad prelazi opšte koncepte baga i debagovanja, nakon čega te iste koncept
 	\item U tekstu se navodi da Mac OS X nije uniksoliki operativni sistem, a u stvari jeste. Može donekle biti zbunjujući naziv jezgra "XNU - X Is not Unix" \ koji nije dodeljen zato što je operativni sistem neuniksolik.\\
 	\odgovor{Greška je ispravljena. Obrisan je Mac OS X iz pomenute rečenice, jer on spada u uniksolike operativne sisteme.}
 	\item Pri obradi QT Creator-a i njegovog okruženja za debagovanje je napomenuto da pri zaustavljanju programa nema nikakve indikacije gde se desila fatalna greška, što je netačno, jer je u svakom trenutku dostupan ceo stek sa pozivima funkcija sa trenutnim brojevima linija, kao i trenutno stanje promenjlivih, ovo će biti dostupnoi čak iako se ne postavi tačka zaustavljanja na mesto greške.
-	\odgovor{Ovo će biti rešeno, našao sam gde se to ispisuje, pošto prošli put taj prozor mi nije bio uključen.}
+	\odgovor{Rešen je problem, određeni prozor u kom se to ispisuje je bio isključen, samim tim nije uočen ispis čak iako je bio tražen s obzirom da u literaturi piše da ima ispisa, ali se kod autora
+	nije pojavljivao, pa neke neproverene stvari autor nije hteo da stavlja u rad.}
            \item U C++ kodu iz listinga 1 ima sintaksička greška, kose crte za komentare su pogrešnom smeru.  \\
 	\odgovor{Rešena primedba, pogrešna strana je ostala zbog latex-a i oznake za novi red, pa je autor povučen time napravio grešku.}
 	\item Pri kraju se u sekciji "Poređenje sa drugim popularnim debagerima", GDB poredi sa VALGRIND-om, što u kontekstu podnaslova nema mnogo smisla, s obzirom da VALGRIND nije debager već skup alata za, pre svega, profajliranje. Čak i da se ograničimo na Memcheck, i on je isključivo memorijski debager, što po definiciji znači da služi za dosta različit skup problema od regularnih debagera, pa mi se čini da nije dobro porediti ih. Moje mišljenje je da treba ili obraditi drugi debager ili se pozabaviti pitanjem: "Kada treba koristiti debager, a kada profajler?"
@@ -191,7 +197,8 @@ Ili pak ako nije originalno, da se doda izvor.
 Ni Kristina ne zna odakle je ovo, nije ona pisala.}
 \item Ni u jednom trenutku se ne pokazuje izgled GDB u terminalu. Bilo bi mnogo jasnije kako funkcionise GDB, posebno rad sa stekom, kad bi se ubacila barem 
 jedna slika programa pokrenutog sa terminalskom verzijom istog.\\
-	\odgovor{Mislim da je dobra ideja, samo da smislimo kako i gde}
+ 	\odgovor{Prikazan je primer jednog jako jednostavnog koda, koji ima grešku već u funkciju koju poziva main funkcija, tako da
+ 	dubina steka nije značajno velika.}
 \end{enumerate}
 \section{Provera sadržajnosti i forme seminarskog rada}
 % Oдговорите на следећа питања --- уз сваки одговор дати и образложење
