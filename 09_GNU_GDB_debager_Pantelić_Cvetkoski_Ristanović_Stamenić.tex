@@ -89,18 +89,13 @@ Takođe, napravljena je paralela između GDB-a i drugih popularnih debagera.
 \section{Uvod}
 \label{sec:uvod}
 
-Može se reći da je sastavni deo pisanja programa njegovo
-debagovanje, jer je pojava bagova gotovo neizbežna. Međutim, greške nisu uvek
-loše za pojedinca. Uz pozitivan stav možemo sagledati prednosti pravljenja grešaka
-poput poboljšanog razumevanja samog rada programa,
-vrsti grešaka koje najčešće pravimo, sticanja uvida o čitljivosti i
-kvalitetu sopstvenog koda. Uzimajući u obzir potrebe i raznolikost
-zadataka koje programer ima, teško je preceniti značaj odgovarajuće
-alatne podrške za programere\cite{seminarski_rad}. 
-Na samom početku ovog rada
-upoznaćemo se sa bagovima i debagovanjem, a u daljem tekstu ćemo
-detaljnije opisati specifičnosti debagera GDB, kako i u kojim
-okruženjima se koristi i kakav je GDB debager u poređenju sa drugim debagerima. 
+Pronalaženje grešaka je složen zadatak, programeri troše dosta vremena na njihovo otklanjanje i zato je važno da budu upoznati sa alatima 
+koji će im pomoći da to vreme skrate. GNU GDB je jedan od najznačajnijih besplatnih softvera koji služi da analizira kompjuterske programe, 
+jedna od mnogih stvari, koje nam ovaj debager omogućava da uradimo a koje će biti opisane u radu, jeste da vidimo šta se dešava ``unutar`` 
+drugog programa dok se izvršava - ili ono što je drugi program radio u trenutku kada se srušio. Ovaj debager zauzima prvo mesto na listi 
+najboljih debagera koji se koriste na Linux operativnom sistemu\cite{ubuntupit}. Na samom početku ovog rada upoznaćemo se sa bagovima i 
+debagovanjem, a u daljem tekstu ćemo detaljnije opisati specifičnosti debagera GDB, kako i u kojim okruženjima se koristi i kakav je GDB 
+debager u poređenju sa drugim debagerima.  
 
 \section{Bag}
 \label{sec:bag}
@@ -173,7 +168,7 @@ nakon što je u softveru utvrđena greška, dok se testiranje koristi da bi
 se osiguralo da je program tačan.
 
 Debagovanje je jedan od najkreativnijih aspekata programiranja, zahteva od programera iskustvo,
-inteligenciju, razmišljanje ``van kutije``, sagledavanje problema sa različitih strana;  
+inteligenciju, razmišljanje ``van kutije``, sagledavanje problema sa različitih strana, logičko zaključivanje, odlučnost;  
 ali može biti i jedan od najzahtevnijih aspekata programiranja. Odlike koje poseduju uspešni debageri su 
 kreativnost, logičko zaključivanje, odlučnost, kao i razmišljanje na drugačiji način.
 Iskustvo i veština debagovanja programera su bitni faktori u procesu debagovanja, ali težina 
@@ -181,16 +176,36 @@ debagovanja softvera najviše varira zbog složenosti sistema, ali takođe, u od
 zavisi i od programskog jezika koji se koristi, kao i dostupnih alata, kao što su 
 debageri. 
 
-Klasično debagovanje se zasniva na tehnici praćenja koda korišćenjem funkcije za ispis, tako što 
+
+\subsection{Vrste debagovanja}
+\label{subsec:vrste}
+
+\textbf{Klasično debagovanje} se zasniva na tehnici praćenja koda korišćenjem funkcije za ispis, tako što 
 ispisujemo vrednosti promenljivih. Pre svega, ovaj način podrazumeva konstantno pozivanje funkcije za 
 ispis, rekompajliranje i pokretanje programa, analizu dobijenog izlaza i konačno uklanjanje 
 poziva funkcije za ispis kada uspemo da popravimo bag. Navedeni koraci se ponavljaju svaki put 
 kada otkrijemo novi bag. Ovaj način debagovanja oduzima previše vremena, stvara umor i najvažnije,
-odvlači pažnju od pravog zadatka.
+odvlači pažnju od pravog zadatka.\cite{art_debugging}
 
-Suprotno tome, sa grafičkim alatima za uklanjanje bagova sve što moramo da uradimo kako bismo 
-ispitali vrednost promenljive je da pomerimo miš do instance te promenljive u kodu i biće
-prikazana njena trenutna vrednost. Pored ovoga, debageri pružaju još dosta razloga da ih koristimo\cite{art_debugging}.
+\textbf{Sistem za interaktivno debagovanje} zahteva mogućnost kontrole toka izvršavanja
+programa: postavljanjem tačaka prekida (engl. brakepoints) izvršavanje
+programa se pauzira, korišćenjem komandi debagera analizira se progres
+programa a zatim se ponovo nastavlja sa izvršavanjem programa. Moguće
+je postaviti i uslovne izraze koji se proveravaju tokom izvršavanja programa i ukoliko se uslovi ispune, izvršavanje programa se 
+zaustavlja i vrše se analize.
+
+\textbf{Udaljeno (daljinsko) debagovanje} je postupak debagovanja programa koji se izvršava
+na sistemu udaljenom od debagera. Da bi proces započeo, debager mora
+da se poveže sa udaljenim sistemom preko mreže. Tada debager može
+da kontroliše izvršavanje programa na udaljenom sistemu i da sakuplja
+informacije o njegovom stanju. Ovo je moguće ukoliko je udaljeni sistem
+iste arhitekture kao i arhitektura na kojoj se debager pokreće, ili ukoliko
+debager poseduje podršku za arhitekturu udaljenog sistema. Daljinsko
+debagovanje je posebno često za uredaje sa ugradenim računarom.
+
+\textbf{Post-mortem debagovanje} je postupak debagovanja programa nakon njegovog prekida. Tačan momenat prekida procesa može se ustanoviti 
+automatski od strane sistema (npr. kada je proces završen zbog nekog odstupanja), preko instrukcija napisanih od strane programera ili 
+eksplicitno od strane korisnika. Za ovu vrstu debagovanja često se koriste datoteke jezgra koje sistem generiše.\cite{vrste_deb}
 
 \subsection{Debager}
 \label{subsec:debager}
@@ -509,10 +524,11 @@ Kakva je razlika između Valgrind-a i GDB-a?
 \section{Zaključak}
 \label{sec:zakljucak}
 
-U procesu programiranja često dolazi do pojave bagova, pa se tako suočavamo i sa procesom njihovog otklanjanja. Zbog toga moramo naučiti da nam proces njihovog traženja i odstranjivanja ne oduzima mnogo vremena, ni energije. Nekada je lako prevideti nešto u kodu, zaboraviti neku trivijalnu stvar ili jednostavno napraviti neku sitnu grešku koja nas može koštati mnogo vremena provedenog gledajući u kod, ispitivajući pogrešne pretpostavke. U ovakvim slučajevima korišćenje debagera nam može uštedeti dosta vremena, ali i živaca. To što nezanemarljiv broj programera izbegava korišćenje alata za debagovanje, jer misle da je učenje korišćenja istih previše komplikovano ili da će im bespotrebno oduzeti vreme, govori da oni nisu dovoljno upućeni u mogućnosti i prednosti rada sa debagerom.
-
-Snagu GDB-a predstavljaju njegove karakteristike, mogućnost da se primeni na mnogim platformama kao i
-stepen do koga njegovo ponašanje može da se prilagodi specifičnim zahtevima\cite{gnu}.  
+GNU GDB predstavlja jedan od najpoznatijih debagera. Za njegovu popularnost zaslužene su odlične performanse. Njegovu snagu predstavljaju 
+njegove karakteristike, mogućnost da se primeni na mnogim platformama kao i stepen do koga njegovo ponašanje može da se prilagodi 
+specifičnim zahtevima\cite{gnu}. Programi koji mogu biti analizirani mogu biti napisani u raznim programskim jezicima, dok se debager može 
+pokrenuti na najpopularnijim operativnim sistemima. Još jedan od razloga zašto je GDB popularan jeste i jednostavan način njegovog 
+korišćenja. 
 
 
 \addcontentsline{toc}{section}{Literatura}
