@@ -427,25 +427,12 @@ dok se sa samim debagerom može interagovati na više načina, između ostalog: 
 \label{sec:poredjenje}
 Postoji mnogo debagera koji se mogu koristiti kako
 na različitim operativnim sistemima tako i za različite programske jezike. 
-Neke od stvari na koje treba obratiti pažnju prilikom izbora debagera:
+Neke od stvari na koje treba obratiti pažnju prilikom izbora debagera\cite{tools}:
 
 \begin{enumerate}
-\item Debagovanje u fazi razvoja \\
-Dobar program za otklanjanje grešaka treba da podržava
-programera u svakoj od sledećih faza uklanjanja grešaka:
-primećivanje greške, pronalaženje uzroka, ispravljanje greške.
-Potrebno je izabrati program koji nam omogućava da uvidimo kako
-su naše promene uticale na ceo sistem.
-\item Efikasno praćenje toka vrednost\\
-Najvažniji faktor efikasnog lociranja uzroka greške predstavlja
-razumevanje detalja i načina na koji kod funkcioniše. Svaki od
-debagera podražava programera u ovom zadatku na drugačiji način.
-\item Debagovanje grešaka u višenitnim procesima\\
-Savremene aplikacije su višenitni i višeprocesni sistemi. 
-Potraga za uzrokom greške u mnogim slučajevima liči na traženje "igle
-u plastu sena". Posebno višenitne aplikacije zahtevaju veliko znanje
-programera o funkcionisanju celog sistema.\cite{tools} 
-Srećom, neki alati omogućavaju pregledanje pojedinačnih niti.
+\item Debagovanje u fazi razvoja
+\item Efikasno praćenje toka vrednost
+\item Debagovanje grešaka u višenitnim procesima
 \item Da li program za otklanjanje grešaka brzo i lako šalje detaljne informacije o otkrivenim greškama?
 \end{enumerate}
 
@@ -506,7 +493,7 @@ memoriju nakon što je oslobođena, čitanje/pisanje na kraj alociranog bloka me
 curenje memorije i  mnoge druge. Valgrind će greške koje se teško pronalaze naći lako. Vrlo je 
 temeljit. Iskustvo programera pokazuje da će otklanjanje svih grešaka koje Valgrind pronađe 
 uštedeti vreme na duže staze. Ponaša se poput virtualnog x86 prevodioca, pa će program raditi 10 
-do 30 puta sporije od uobičajenog \cite{hpc}.\\
+do 30 puta sporije od uobičajenog \cite{valgrind}.\\
 
 Kakva je razlika između Valgrind-a i GDB-a?
 \begin{enumerate}
@@ -516,7 +503,7 @@ Kakva je razlika između Valgrind-a i GDB-a?
 \item[•]GDB ne proverava da li se koriste neinicijalizovane vrednosti ili je preplavljena dinamička memorija;
 \item[•]I GDB i Valgrind će pokazati broj linije u kojoj se desio Segmentation fault;
 \item[•]Valgrind često pokazuje i uzrok  Segmentation fault-a;
-\item[•]Često se greške pronalaze i ispravljaju brže koristeći Valgrind nego GDB. \cite{hpc}
+\item[•]Često se greške pronalaze i ispravljaju brže koristeći Valgrind nego GDB. \cite{valgrind}
 \end{enumerate}
 
 \section{Zaključak}
