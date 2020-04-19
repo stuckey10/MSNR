@@ -19,7 +19,7 @@
 
 \begin{document}
 
-\title{GN GDB debager\\ \small{
+\title{GNU GDB debager\\ \small{
 Kristina Pantelić, 91/2016, kristinapantelic@gmail.com 
 \\
 Ivana Cvetkoski, 65/2016, ivana.cvetkoski@gmail.com
@@ -72,9 +72,10 @@ Mislim da je poglavlje ``Udaljeno debagovanje`` previše detaljno opisano i treb
 sa upotrebom alata Qt Creator prebačene u dodatak, ali su se pre toga nalazile u poglavlju 6 iz razloga što sam \LaTeX {} raspoređuje figure tako da celokupni dokument zauzme što manje 
 prostora.}
 
-Tekst ispod poglavlja ``Poređenje sa drugim popularnim debagerima`` govori o stvarima na koje treba obratiti pažnju prilikom izbora debagera i nema veze sa naslovom poglavlja, možda je bolje ispod poglavlja ``Debager`` napraviti podpoglavlje sa ovim tekstom. Kod poređenja GDB debagera sa LLDB i Valgrind debagerom, možda ne bi bilo loše dodati tabelu na kojoj će biti prikazano poredjenje GDB debagera sa ostalim debagerima na primer po pitanju podrške za programske jezike, implementacije samih debagera, korisničkih interfejsa i slično, time se dobija na preglednosti. 
+Tekst ispod poglavlja ``Poređenje sa drugim popularnim debagerima`` govori o stvarima na koje treba obratiti pažnju prilikom izbora debagera i nema veze sa naslovom poglavlja, možda je bolje ispod poglavlja ``Debager`` napraviti podpoglavlje sa ovim tekstom. \odgovor{Tekst o stvarima na koje treba obratiti pažnju prilikom izbora debagera predstavlja uvod u temu o poređenju debagera, sadrži informacije o nekim osnovnim karakteristikama debagera kako bismo čitaoca uveli u priču o poređenju i kako bi on imao bolji uvid u to šta dobar debager treba da zadovoljava. Taj tekst je ipak skraćen jer su čitaocu dovoljne samo neke opšte informacije, bez zalaženja u detalje.} Kod poređenja GDB debagera sa LLDB i Valgrind debagerom, možda ne bi bilo loše dodati tabelu na kojoj će biti prikazano poredjenje GDB debagera sa ostalim debagerima na primer po pitanju podrške za programske jezike, implementacije samih debagera, korisničkih interfejsa i slično, time se dobija na preglednosti. 
 
 Zaključak, govori o bagovima, debagovanju i zašto je debager koristan alat, a jako malo o GDB debageru, treba ga preformulisati tako da sumira sve pozitivne i negativne stvari vezane za GDB debager, dati čitaocu pregled situacija (na primer jezika, operativnih sistema, razvojnih okruženja) kada GDB pruža svoj maksimalni potencijal, ali i dati prostora čitaocu da sam odluči da li je GDB debager za njega.
+\odgovor{Zaključak je preformulisan.} 
 \section{Sitne primedbe}
 % Напишете своја запажања на тему штампарских-стилских-језичких грешки
 Nisam naišao na veliki broj štamparskih grešaka, ali posoji nekolicina koje sam zapazio. U poglavlju 3 u rečenici ``takođe zavisi, u određenoj meri, i od programskog jezika...`` ne treba pisati slovo ``i`` posle zareza. 
@@ -82,12 +83,12 @@ Nisam naišao na veliki broj štamparskih grešaka, ali posoji nekolicina koje s
 U poglavlju 3 u prvoj rečenici treba napraviti razmak ``meta program``.
 \odgovor{Ispravno je i "metaprogram", "meta-program", kao i "meta program", stoga ostavljeno je "metaprogram".} 
 U poglavlju 4.1.2 možda je lepše u zagradi napisati ``počevši od vrha steka`` umesto pisanja crtice, takodje u istom poglavlju treba napraviti razmak kod ``šetamo kroz stek pozive``.  
-\odgovor{Crtica je zamenjena zarezom, jer smatramo da tako lepše izgleda nego u zagradama, ali je konstatacija na mestu. Razmak nije pdf-u zbog latex-a, jer on tako ostavlja, ali je i to rešeno.}
+\odgovor{Crtica je zamenjena zarezom, jer smatramo da tako lepše izgleda nego u zagradama, ali je konstatacija na mestu. Razmak nije u pdf-u zbog latex-a, jer on tako ostavlja, ali je i to rešeno.}
 U poglavlju 5.1 jedna od rečenica glasi ``Tako se tu mogu naći..``, lepše je napisati ``Tu se mogu naći..``, na više mesta u ovom poglavlju nije napravljen razmak 
 na mestima gde je potrebno kao na primer ``Load Binary(slika 1.1)`` ili ``konzole(slika 1.5)``.
-\odgovor{Razmaci su rešeni, s obzirom na naknadno dodavanje tih delova, nije uočeno da nedostaju razmaci. \\Videćemo šta ćemo za deo pre toga, za tu rečenicu.}
+\odgovor{Razmaci su rešeni, s obzirom na naknadno dodavanje tih delova, nije uočeno da nedostaju razmaci.}
 Globalno je možda lepše, kada referišemo na sliku, tu referencu staviti u zagradu, na primer (1) umesto 1. Stilovi pisanja su prilično dobro usklađeni.
-\odgovor{Ovo treba da se dogovorimo}
+\odgovor{Ako referencu stavimo u zagradu, rečenice gube smisao. Na primer, u rečenici "Pojednostavljen prikaz gdbgui-a dat je slikom 1" ne bi imalo smisla 1 staviti u zagradu.}
 
 \section{Provera sadržajnosti i forme seminarskog rada}
 % Oдговорите на следећа питања --- уз сваки одговор дати и образложење
@@ -106,7 +107,7 @@ a tema rada je GDB debager, slično važi i za uvod.
 
 \item Da li je naslov rada dobro izabran?\\
 Naslov rada je dobro izabran i sadržaj je u velikoj meri usklađen sa njim. Izdvojio bih samo poglavlje ``6`` i tekst ispod njega, koji nema veze sa naslovom.
-\odgovor{I ovo}
+\odgovor{Tekst ispod poglavlja 6 je već objašnjen, a potpoglavlja sasvim odgovaraju temi.}
 
 \item Da li sažetak sadrži prave podatke o radu?\\
 Sažetak daje prave podatke o radu i mislim da je ukratko opisao sve teme kojima se rad bavi.
@@ -119,13 +120,14 @@ Za razumevanje teksta nije potrebno preveliko predznanje, jer je dosta pojmova d
 
 \item Da li je u radu navedena odgovarajuća literatura?\\
 Literatura jeste dobro navedena sem reference 4 https://www.hpc-europa.org/. za koju nisam pronašao literaturu vezanu za rad. 
+\odgovor{U pitanju je prezentacija odakle je preuzet tekst koje je citiran. Naveden je sajt koji je stajao na početnom slajdu prezentacije 
+jer nisam bila sigurna da li je u redu da u litarturi stoji prezentacija. Ova referenca je promenjena i postavljen je link do prezentacije.}
 Ostatak literature sadrzi dosta knjiga vezanaih za temu debagera sto je pohvalno. Određeni delovi korišćeni su iz literature o 
 debagovanju profesora Saše Malkova, bilo bi lepo, navesti i ovaj izvor literature.
-\odgovor{Bojana treba da reši hpc-europa, ako se ne varam ona je dodala to, a ja ne mogu da se snađem :D Baltazara (https://konkursiregiona.net/wp-content/uploads/2016/05/prof.-baltazar-253x300.jpg)
-treba da citiramo.}
+\odgovor{Korišćena je literatura koju je profesor koristio u svojoj literaturi, tako da su ti delovi preuzeti iz te literature a ne od profesora Malkova.}
 
 \item Da li su u radu reference korektno navedene?\\
-Sa reference pod rednim brojem 4, https://www.hpc-europa.org/. nisam pronašao podatke koji stoje u tekstu, ostale reference jesu dobro navedene.
+Sa reference pod rednim brojem 4, https://www.hpc-europa.org/. nisam pronašao podatke koji stoje u tekstu, ostale reference jesu dobro navedene. \odgovor{Problem je objašnjen u stavci iznad.}
 
 \item Da li je struktura rada adekvatna?\\
 Struktura rada jeste dobra, rad sadrži poglavlja i podpoglavlja, ima sažetak, uvod i zaključak, sadržaj i deo sa literaturom. Pohvalio bih to što se tabela najbitnih 
@@ -169,12 +171,14 @@ Ovaj rad prelazi opšte koncepte baga i debagovanja, nakon čega te iste koncept
 	nije pojavljivao, pa neke neproverene stvari autor nije hteo da stavlja u rad.}
            \item U C++ kodu iz listinga 1 ima sintaksička greška, kose crte za komentare su pogrešnom smeru.  \\
 	\odgovor{Rešena primedba, pogrešna strana je ostala zbog latex-a i oznake za novi red, pa je autor povučen time napravio grešku.}
-	\item Pri kraju se u sekciji "Poređenje sa drugim popularnim debagerima", GDB poredi sa VALGRIND-om, što u kontekstu podnaslova nema mnogo smisla, s obzirom da VALGRIND nije debager već skup alata za, pre svega, profajliranje. Čak i da se ograničimo na Memcheck, i on je isključivo memorijski debager, što po definiciji znači da služi za dosta različit skup problema od regularnih debagera, pa mi se čini da nije dobro porediti ih. Moje mišljenje je da treba ili obraditi drugi debager ili se pozabaviti pitanjem: "Kada treba koristiti debager, a kada profajler?"
+	\item Pri kraju se u sekciji "Poređenje sa drugim popularnim debagerima", GDB poredi sa VALGRIND-om, što u kontekstu podnaslova nema mnogo smisla, s obzirom da VALGRIND nije debager već skup alata za, pre svega, profajliranje. Čak i da se ograničimo na Memcheck, i on je isključivo memorijski debager, što po definiciji znači da služi za dosta različit skup problema od regularnih debagera, pa mi se čini da nije dobro porediti ih. Moje mišljenje je da treba ili obraditi drugi debager ili se pozabaviti pitanjem: "Kada treba koristiti debager, a kada profajler?" 
+	\odgovor{ Na zvaničnoj stranici Valgrind-a stoji da je on i debager i profajler. Takođe, pronađen je članak o 20 najpopularnijh Linux debagera u koje je uključen Valgrind. Iz tog razloga, ovaj deo je ostavljen u radu.}
 	\item Navedeno je da je DDD debager, sto stvara konfuziju u rečenici gde se istovremeno uvodi kao debager i kao softver koji podržava debagere, po meni je najbolje adresirati ga kao "grafički interfejs za debagere". \\
 	\odgovor{Naveden deo je preformulisan na sledeći način:  ``...zbog popularnosti grafičkih korisničkih interfejsa
 (\textit{eng.} GUI) razvijen je veliki broj GUI zasnovanih (\textit{eng.} GUI-based) debagera koji rade pod Unix sistemom. Većina njih su grafički interfejsi za debagere. Jedan od najpoznatijih grafičkih interfejsa za debagere je DDD (\textit{eng.} Data Display Debugger)``.} 
 	\item Referenca broj 4 u literaturi je dosta nekonkretna ili je pogrešno postavljena. Nisam uspeo na obezbeđenom linku da nađem navedene činjenice odnosno literaturu.
-    \odgovor{Kao i gore, hpc-europa moramo da rešimo}
+    \odgovor{U pitanju je prezentacija odakle je preuzet tekst koji je citiran. Naveden je sajt koji je stajao na početnom slajdu prezentacije 
+jer nisam bila sigurna da li je u redu da u litarturi stoji prezentacija. Ova referenca je promenjena i postavljen je link do prezentacije.}
 
  
 \end{enumerate}
@@ -195,8 +199,7 @@ Ovaj rad prelazi opšte koncepte baga i debagovanja, nakon čega te iste koncept
  Neke od stvari na koje treba obratiti pažnju prilikom izbora debagera  $\rightarrow$  Na osnovu prethodnog teksta, neke od stvari na koje treba obratiti pažnju prilikom izbora debagera
 \\
 Ili pak ako nije originalno, da se doda izvor. 
-	\odgovor{Ovo treba da rešimo, ja iskreno ne znam je li neko sam pisao ili citirao, ali valjalo bi rešiti. \\
-Ni Kristina ne zna odakle je ovo, nije ona pisala.}
+\odgovor{Rešeno. Refernca je stavljena na pogrešnom mestu u tekstu, odnosi se na ceo taj deo teksta a ne samo na par račenica kako je prvobitno stajalo.}
 \item Ni u jednom trenutku se ne pokazuje izgled GDB u terminalu. Bilo bi mnogo jasnije kako funkcionise GDB, posebno rad sa stekom, kad bi se ubacila barem 
 jedna slika programa pokrenutog sa terminalskom verzijom istog.\\
  	\odgovor{Prikazan je primer jednog jako jednostavnog koda, koji ima grešku već u funkciju koju poziva main funkcija, tako da
@@ -214,7 +217,7 @@ Sve neophodno je obrađeno, ali kada su u pitanju teme sa debagovanjem uvek je d
 Osim krupnih primedbi u sekciji iznad smatram da nema propusta.
 \item Da li je naslov rada dobro izabran?\\
 Koristi zadatu ključnu reč u naslovu, što je odlično, jedino možda nije toliko primamljiv jer više zvuči kao naslov u udžbeniku.
-	\odgovor{Možda da promenimo, ali da ne budemo ovako "šaljivi"{} kao recenzent} 
+	\odgovor{Naslov je promenjen. Hvala na sugestiji.} 
 Možda bi bilo bolje nazvati ga "GNU GDB debager pod mikroskopom" \ ili nešto u sličnom duhu. 
 \item Da li sažetak sadrži prave podatke o radu?\\
 Da, sažeto, precizno i pravilno opisuje sadržaj rada.
