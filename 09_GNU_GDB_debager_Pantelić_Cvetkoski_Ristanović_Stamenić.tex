@@ -78,7 +78,7 @@ Nikola Stamenić, 177/2016, nikola.stamenic@hotmail.com
 \abstract{
 Danas je teško zamisliti da bismo mogli napraviti bilo koji značajan projekat bez korišćenja
 naprednih alata za pronalaženje grešaka. U ovom radu čitalac će se upoznati sa terminom \textbf{debagovanje}, 
-specifičnostima GDB-a, načinom upravljanja i njegovim korišćenjem u razvojnim okruže\-njima. 
+specifičnostima GNU GDB debagera, načinom upravljanja i njegovim korišćenjem u razvojnim okruže\-njima. 
 Takođe, napravljena je paralela između GDB-a i drugih popularnih debagera.
 }
 
@@ -90,11 +90,9 @@ Takođe, napravljena je paralela između GDB-a i drugih popularnih debagera.
 \label{sec:uvod}
 
 Pronalaženje grešaka je složen zadatak, programeri troše dosta vremena na njihovo otklanjanje i zato je važno da budu upoznati sa alatima 
-koji će im pomoći da to vreme skrate. GNU GDB je jedan od najznačajnijih besplatnih softvera koji služi da analizira kompjuterske programe, 
-jedna od mnogih stvari, koje nam ovaj debager omogućava da uradimo a koje će biti opisane u radu, jeste da vidimo šta se dešava ``unutar`` 
-drugog programa dok se izvršava - ili ono što je drugi program radio u trenutku kada se srušio. Ovaj debager zauzima prvo mesto na listi 
+koji će im pomoći da to vreme skrate. GNU GDB debager je jedan od najznačajnijih besplatnih softvera koji služi da analizira kompjuterske programe. Jedna od mnogih stvari koje nam ovaj debager omogućava da uradimo, a koje će biti opisane u radu, jeste da vidimo šta se dešava ``unutar`` programa u toku izvršavanja tj. da imamo uvid u stanja izvršavanja programa. Ovaj debager zauzima prvo mesto na listi 
 najboljih debagera koji se koriste na Linux operativnom sistemu\cite{ubuntupit}. Na samom početku ovog rada upoznaćemo se sa bagovima i 
-debagovanjem, a u daljem tekstu ćemo detaljnije opisati specifičnosti debagera GDB, kako i u kojim okruženjima se koristi i kakav je GDB 
+debagovanjem, a u daljem tekstu ćemo detaljnije opisati specifičnosti GDB debagera, kako i u kojim okruženjima se koristi i kakav je GDB 
 debager u poređenju sa drugim debagerima.  
 
 \section{Bag}
@@ -140,7 +138,7 @@ nedostataka koji sprečavaju tačnu operaciju računarskog softvera ili sistema.
 obično otkriva, jer se program neočekivano ponaša. Da bi se pronašao uzrok kvara, 
 ključno je objasniti zašto dolazi do takvog ponašanja. Debagovanje ima tendenciju da 
 bude teže kada su različiti podsistemi čvrsto povezani, pošto promene u jednom mogu da 
-prouzrokuju nastanak bagova u drugom \cite{debagovanje}.	
+prouzrokuju nastanak bagova u drugom\cite{debagovanje}.	
 
 \vspace{4mm}
 
@@ -169,12 +167,10 @@ se osiguralo da je program tačan.
 
 Debagovanje je jedan od najkreativnijih aspekata programiranja, zahteva od programera iskustvo,
 inteligenciju, razmišljanje ``van kutije``, sagledavanje problema sa različitih strana, logičko zaključivanje, odlučnost;  
-ali može biti i jedan od najzahtevnijih aspekata programiranja. Odlike koje poseduju uspešni debageri su 
-kreativnost, logičko zaključivanje, odlučnost, kao i razmišljanje na drugačiji način.
-Iskustvo i veština debagovanja programera su bitni faktori u procesu debagovanja, ali težina 
+ali može biti i jedan od najzahtevnijih aspekata programiranja.
+Iskustvo i veština debagovanja programera su bitni faktori u procesu debagovanja. Međutim, težina 
 debagovanja softvera najviše varira zbog složenosti sistema, ali takođe, u određenoj meri,
-zavisi i od programskog jezika koji se koristi, kao i dostupnih alata, kao što su 
-debageri. 
+zavisi i od programskog jezika koji se koristi, kao i dostupnih alata poput debagera. 
 
 
 \subsection{Vrste debagovanja}
@@ -185,12 +181,12 @@ ispisujemo vrednosti promenljivih. Pre svega, ovaj način podrazumeva konstantno
 ispis, rekompajliranje i pokretanje programa, analizu dobijenog izlaza i konačno uklanjanje 
 poziva funkcije za ispis kada uspemo da popravimo bag. Navedeni koraci se ponavljaju svaki put 
 kada otkrijemo novi bag. Ovaj način debagovanja oduzima previše vremena, stvara umor i najvažnije,
-odvlači pažnju od pravog zadatka.\cite{art_debugging}
+odvlači pažnju od pravog zadatka\cite{art_debugging}.
 
 \textbf{Sistem za interaktivno debagovanje} zahteva mogućnost kontrole toka izvršavanja
-programa: postavljanjem tačaka prekida (engl. brakepoints) izvršavanje
+programa: postavljanjem tačaka prekida (engl. breakpoints) izvršavanje
 programa se pauzira, korišćenjem komandi debagera analizira se progres
-programa a zatim se ponovo nastavlja sa izvršavanjem programa. Moguće
+programa, a zatim se ponovo nastavlja sa izvršavanjem programa. Moguće
 je postaviti i uslovne izraze koji se proveravaju tokom izvršavanja programa i ukoliko se uslovi ispune, izvršavanje programa se 
 zaustavlja i vrše se analize.
 
@@ -200,12 +196,13 @@ da se poveže sa udaljenim sistemom preko mreže. Tada debager može
 da kontroliše izvršavanje programa na udaljenom sistemu i da sakuplja
 informacije o njegovom stanju. Ovo je moguće ukoliko je udaljeni sistem
 iste arhitekture kao i arhitektura na kojoj se debager pokreće, ili ukoliko
-debager poseduje podršku za arhitekturu udaljenog sistema. Daljinsko
-debagovanje je posebno često za uredaje sa ugradenim računarom.
+debager poseduje podršku za arhitekturu udaljenog sistema. Udaljeno debagovanje se koristi za 
+debagovanje ugradnih uređaja, uređaja na kojima se neposredno debagovanje ne može izvršiti 
+ili debagovanje jezgra operativnog sistema.
 
 \textbf{Post-mortem debagovanje} je postupak debagovanja programa nakon njegovog prekida. Tačan momenat prekida procesa može se ustanoviti 
 automatski od strane sistema (npr. kada je proces završen zbog nekog odstupanja), preko instrukcija napisanih od strane programera ili 
-eksplicitno od strane korisnika. Za ovu vrstu debagovanja često se koriste datoteke jezgra koje sistem generiše.\cite{vrste_deb}
+eksplicitno od strane korisnika. Za ovu vrstu debagovanja često se koriste datoteke jezgra koje sistem generiše\cite{vrste_deb}.
 
 \subsection{Debager}
 \label{subsec:debager}
@@ -216,12 +213,12 @@ na određenim tačkama programa ukoliko su određeni uslovi ispunjeni.
 Obično se programi koji se prevode u režimu za debagovanje
 sporije izvršavaju nego kada se isti program izvršava u normalnom režimu rada čak i ako je 
 u pitanju rad na istom procesoru\cite{debugger}.  Kada program usled baga ili netačnog podatka ne može da 
-nastavi normalno sa radom, napredniji debager pokazuje lokaciju problema u originalnom kodu. Takođe
+nastavi normalno sa radom, napredniji debager pokazuje lokaciju problema u originalnom kodu. Takođe,
 debager nam omogućava da postavimo tačke posmatranja koje nam
-mogu reći u kom trenutku tokom izvođenja programa vrednost
-određene promenljive postaje sumnjiva, omogućava nam da
+mogu reći u kom trenutku tokom izvršavanja programa vrednost
+određene promenljive postaje sumnjiva; omogućava nam da
 pratimo izvršavanje programa, da ga zaustavimo, restartujemo,
-postavimo mesta prekida, i da izmenimo vrednosti u memoriji. 
+postavimo mesta prekida i da izmenimo vrednosti u memoriji. 
 
 \section{GNU debager (GDB)}
 \label{sec:GDB}
@@ -231,10 +228,10 @@ za GNU sistem\cite{gdb}. Danas održavanjem upravlja GDB upravni odbor koga je f
 slobodnog softvera (\textit{eng.} Free Software Foundation).
 GDB je pisan na programskom jeziku C i standardni je debager za GNU operativni sistem. 
 Međutim, njegova upotreba nije isključivo ograničena na GNU operativni sistem. To je prenosivi debager
-koji radi na mnogim Uniksolikim (eng. \textit{unixlike}) operativnim sistemima ali i na Microsoft Windows operativnim 
+koji radi na mnogim Uniksolikim (eng. \textit{unixlike}) operativnim sistemima, ali i na Microsoft Windows operativnim 
 sistemima. Koristi se za mnoge programske jezike, uključujući
 Adu, C, C++, Objective-C, Free Pascal, Fortran, Javu.
-Poslednja realizovana verzija alata GNU GDB u vreme pisanje ovog rada je 9.1\cite{sourceware}. 
+Poslednja realizovana verzija alata GDB u vreme pisanje ovog rada je 9.1\cite{sourceware}. 
 
 Jedna od specifičnosti GNU debagera, pored svoje standardne namene, jeste da omogućava i 
 pronalaženje, analiziranje i otklanjanje grešaka u programima koji se izvršavaju na računarima drugih 
@@ -243,7 +240,7 @@ arhitektura (udaljeno debagovanje)\cite{master_rad}.
 \subsection{Osnovne operacije GDB-a}
 \label{subsec:debager_operacije}
 
-GDB komanda \textbf{run}, pokreće izvršavanje programa od prve linije izvornog koda.
+GDB komanda \textbf{run} pokreće izvršavanje programa od prve linije izvornog koda.
 Izvršavanje programa teče do trenutka dok ga GDB ne pauzira. 
 Razlog pauziranja može biti na programskoj ili programerskoj strani.
 Pod programskom stranom podrazumeva se pauziranje
@@ -254,11 +251,11 @@ vrednosti promenljivih u cilju otkrivanja grešaka.
 \subsubsection{Metode upravljanja debagovanjem u GDB-u}
 \label{subsec:gdb_metode}
 
-Da bi se sam GDB koristio na određenom programu, neophodno je isti kompajlirati 
-na određen način. Za programske jezike C i C++ to je zastavicom \textit{-g}, odnosno
-\textit{gcc program.c -g -o program} za C, dok je za C++ \textit{g++ program.cpp -g -o program}.
+Da bi se GDB koristio nad određenim programom, neophodno je program kompajlirati 
+na određen način. Za programske jezike C i C++ to je zastavicom \textit{-g}, odnosno naredbom
+\textit{gcc program.c -g -o program} za C, dok je za C++ naredba \textit{g++ program.cpp -g -o program}.
 
-Jedna jako korisna opcija je navođenje \textit{-\phantom{}-tui} zastavice pri pokretanju samog debagera. 
+Jedna veoma korisna opcija je navođenje \textit{-\phantom{}-tui} zastavice pri pokretanju samog debagera. 
 Korisna je iz razloga što korisnik dobija izvorni kod programa koji debaguje, što dalje olakšava posao postavljanja
 tačaka prekida i eventualno uočavanje nekih od grešaka\cite{oReilly}.\\
 Neke od metoda kojima programer može upravljati GDB debagerom:\cite{art_debugging}
@@ -283,6 +280,20 @@ sve do njenog prvog dostizanja u izvršavanju programa. Nakon njenog prvog dosti
 ta tačka zaustavljanja prestaje da važi. 
 \end{enumerate}
 
+\subsubsection{Tačke zaustavljanja}
+\label{subsec:gdbtackezaustavljanja}
+
+Postoje tri razloga zbog kojih GDB može pauzirati izvršavanje programa:\cite{art_debugging}
+\begin{enumerate}
+\item Tačka zaustavljanja (\textit{eng.} breakpoint) \\
+GDB pauzira izvršavanje programa kada se stigne do naznačenog mesta u programu.
+\item Tačka nadgledanja (\textit{eng.} watchpoint) \\ 
+GDB pauzira izvršavanje programa kada se promeni vrednost memorijske lokacije koju programer želi da prati.
+\item Tačka hvatanja (\textit{eng.} catchpoint) \\
+GDB pauzira izvršavanje programa kada se određeni događaj desi.
+\end{enumerate}
+U dokumentaciji ova tri mehanizma se zajedničkim imenom nazivaju tačke zaustavljanja.
+
 \subsubsection{Kretanje kroz stek pozive naviše i naniže}
 \label{subsec:debager_stek}
 
@@ -294,9 +305,8 @@ sistemski stek. Na vrhu steka nalazi se funkcija koja se trenutno izvršava,
 a nakon završetka funkcije njen stek frejm se skida.
 Postoje funkcionalnosti uz pomoć kojih možemo da se "šetamo"{} kroz stek pozive.
 To uspevamo narednim komandama: \\
-\indent Pozivanjem GDB komande \textbf{frame}, okviri na steku se numerišu od nule, počevši
-od vrha steka. \newline 
-\indent GDB komanda \textbf{up} vodi do narednog roditeljskog stek frejma, dok komanda \textbf{down} 
+Pozivanjem GDB komande \textbf{frame}, okviri na steku se numerišu od nule, počevši
+od vrha steka. GDB komanda \textbf{up} vodi do narednog roditeljskog stek frejma, dok komanda \textbf{down} 
 vodi u suprotnom smeru. Navedene operacije mogu biti veoma korisne, jer vrednosti lokalnih 
 promenljivih u nekim od ranijih poziva mogu dati rešenje o tome šta je tačno izazvalo bag. 
 GDB komanda \textbf{backtrace} pokazuje ceo stek tj. celu kolekciju stek frejmova koja trenutno postoji na steku\cite{art_debugging}.
@@ -321,29 +331,10 @@ Neke od najbitnijih komandi GDB-a date su u dodatku u tabeli \ref{tab:tabelaKonz
 može naći na \url{http://www.yolinux.com/TUTORIALS/GDB-Commands.html\#GDB\_COMMAND\_LINE\_ARGS},
 kao i u MAN stranama Linux operativnih sistema. 
 
-
-\subsubsection{Tačke zaustavljanja}
-\label{subsec:gdbtackezaustavljanja}
-
-Postoje tri razloga zbog kojih GDB može pauzirati izvršavanje programa:\cite{art_debugging}
-\begin{enumerate}
-\item Tačka zaustavljanja (\textit{eng.} breakpoint) \\
-GDB pauzira izvršavanje programa kada se stigne do naznačenog mesta u programu.
-\item Tačka nadgledanja (\textit{eng.} watchpoint) \\ 
-GDB pauzira izvršavanje programa kada se promeni vrednost memorijske lokacije koju programer želi da prati.
-\item Tačka hvatanja (\textit{eng.} catchpoint) \\
-GDB pauzira izvršavanje programa kada se određeni događaj desi.
-\end{enumerate}
-U dokumentaciji ova tri mehanizma se zajedničkim imenom nazivaju tačke zaustavljanja. 
-
 \subsubsection{Udaljeno debagovanje}
 \label{subsec:gdb_udaljeno}
 
-GDB pruža mogućnost udaljenog debagovanja koji se koristi za debagovanje ugradnih uređaja, 
-uređaja na kojima se neposredno debagovanje ne može izvršiti ili debagovanje jezgra operativnog sistema. 
-Udaljeno debagovanje podrazumeva da se GDB izvršava na jednoj mašini, a program koji se debaguje na drugoj mašini.
-Jedan način uspostavljanja komunikacije za debagovanje udaljenog uređaja je kreiranje udaljenog posrednika koji je specifičan za konkretnu arhitekturu računara koji se debaguje. Udaljen posrednik je programski kod koji se izvršava na udaljenom uređaju i 
-omogućava komunikaciju sa GDB-om. Specifičnost ovog načina komunikacije je neophodnost pravljenja udaljenog posrednika pri svakom debagovanju. \\
+GDB pruža mogućnost udaljenog debagovanja. Jedan način uspostavljanja komunikacije za debagovanje udaljenog uređaja je kreiranje udaljenog posrednika (podrške) koji je specifičan za konkretnu arhitekturu računara koji se debaguje. Udaljeni posrednik je programski kod koji se izvršava na udaljenom uređaju i omogućava komunikaciju sa GDB-om. Specifičnost ovog načina komunikacije je neophodnost pravljenja udaljenog posrednika pri svakom debagovanju. \\
 Opisani koncept koristi KGDB za debagovanje Linux jezgra na nivou izvornog koda. Velika prednost KGDB-a 
 je u tome što programeri koji razvijaju jezgro mogu debagovati jezgro na sličan način kao što se 
 debaguje bilo koja druga programska aplikacija. Moguće je postavljati tačke zaustavljanja u kodu jezgra, prolaziti korak po korak kroz kod, ispitivati vrednosti promenljivih\cite{kgd}.
