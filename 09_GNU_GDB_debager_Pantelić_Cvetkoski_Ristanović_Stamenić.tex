@@ -19,6 +19,7 @@
 
 \usepackage{listings}
 %\usepackage{xurl}
+\usepackage{pifont}
 
 %\newtheorem{primer}{Пример}[section] %ćirilični primer
 \newtheorem{primer}{Primer}[section]
@@ -514,6 +515,24 @@ Kakva je razlika između Valgrind-a i GDB-a?\cite{valgrind}
 \item[•]Valgrind često pokazuje i uzrok  Segmentation fault-a;
 \item[•]Često se greške pronalaze i ispravljaju brže koristeći Valgrind nego GDB.
 \end{enumerate}
+
+Još neka poređenja GDB-a sa drugim debagerima data su u narednoj tabeli (tabela \ref{tab:tabela2}) \cite{poredjenje}.
+
+\begin{table}[h!]
+\begin{center}
+\caption{Poređenje debagera}
+\begin{tabular}{|l |c|c|c|c|} \hline
+Odlika/Debager	& GDB	 & PGDB		&IDB	&MVSD \\ \hline
+Ispitivanje stanja niti                              & \ding{52}            & \ding{52}		&\ding{52}		&\ding{52}\\
+Specifične tačke prekida   & \ding{52}            & \ding{52}		&\ding{52}		&\ding{52}\\
+Događaji deljenja podataka u nitima	 & \ding{56}            & \ding{52}		&\ding{52}		&\ding{52}\\
+Automatsko obaveštavanje o novim nitima	 & \ding{52}            & \ding{52}		&\ding{52}		&\ding{52}\\
+Funkcije za evidentiranje	 & \ding{56}            & \ding{52}		&\ding{56}		&\ding{56}\\ \hline
+\end{tabular}
+\label{tab:tabela2}
+\end{center}
+\end{table}
+
 
 \section{Zaključak}
 \label{sec:zakljucak}
