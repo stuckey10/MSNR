@@ -78,7 +78,7 @@ Nikola Stamenić, 177/2016, nikola.stamenic@hotmail.com
 \abstract{
 Danas je teško zamisliti da bismo mogli napraviti bilo koji značajan projekat bez korišćenja
 naprednih alata za pronalaženje grešaka. U ovom radu čitalac će se upoznati sa terminom \textbf{debagovanje}, 
-specifičnostima GNU GDB debagera, načinom upravljanja i njegovim korišćenjem u razvojnim okruže\-njima. 
+specifičnostima GDB-a, načinom upravljanja i njegovim korišćenjem u razvojnim okruže\-njima. 
 Takođe, napravljena je paralela između GDB-a i drugih popularnih debagera.
 }
 
@@ -110,23 +110,23 @@ skladu sa specifikacijom ili očekivanjem korisnika\cite{deb_app}.
 
 \vspace{4mm}
 
-Jedna od uobičajenih klasifikacija bagova je prema načinu ispoljavanja:
+Jedna od uobičajenih klasifikacija bagova je prema načinu ispoljavanja\cite{deb_app}:
 \begin{enumerate}
 \item Nekonzistentnosti u korisničkom interfejsu
 \item Neispunjena očekivanja
 \item Slabe performanse
-\item Padovi sistema (programa) ili oštećenja podataka\cite{deb_app}
+\item Padovi sistema (programa) ili oštećenja podataka
 \end{enumerate}
 
 \vspace{4mm}
 
-Razlozi za greške uglavnom spadaju u sledeće kategorije procesa:
+Razlozi za greške uglavnom spadaju u sledeće kategorije procesa\cite{deb_app}:
 \begin{enumerate}
 \item Kratki ili nemogući rokovi
 \item Pristup „Prvo kodiraj, razmišljaj kasnije“
 \item Pogrešno shvaćeni zahtevi
 \item Neznanje inženjera ili nepravilna obuka
-\item Nedostatak posvećenosti kvalitetu\cite{deb_app}
+\item Nedostatak posvećenosti kvalitetu
 \end{enumerate}
 
 
@@ -147,7 +147,7 @@ je pametnije moguće, po definiciji, niste dovoljno pametni da ga ispravite."\\
 \hspace*{0pt}\hfill-Brian V. Kernighan}
 
 \vspace{4mm}
-Debagovanje se sastoji iz četiri koraka:
+Debagovanje se sastoji iz četiri koraka\cite{deb_app}:
 \begin{enumerate}
 \item Uočavanje da postoji greška
 \item Razumevanje greške
@@ -163,14 +163,14 @@ se greška locira, njeno ispravljanje u većini slučajeva ne predstavlja poseba
 Testiranje je metod koji smanjuje verovatnoću nastajanja grešaka.
 Otklanjanje grešaka se razlikuje od testiranja. Debagovanje počinje
 nakon što je u softveru utvrđena greška, dok se testiranje koristi da bi
-se osiguralo da je program tačan.
+se osiguralo da je program tačan\cite{deb_app}.
 
 Debagovanje je jedan od najkreativnijih aspekata programiranja, zahteva od programera iskustvo,
 inteligenciju, razmišljanje ``van kutije``, sagledavanje problema sa različitih strana, logičko zaključivanje, odlučnost;  
 ali može biti i jedan od najzahtevnijih aspekata programiranja.
 Iskustvo i veština debagovanja programera su bitni faktori u procesu debagovanja. Međutim, težina 
 debagovanja softvera najviše varira zbog složenosti sistema, ali takođe, u određenoj meri,
-zavisi i od programskog jezika koji se koristi, kao i dostupnih alata poput debagera.  
+zavisi i od programskog jezika koji se koristi, kao i dostupnih alata poput debagera\cite{deb_app}.  
 
 
 \subsection{Vrste debagovanja}
@@ -258,7 +258,7 @@ na određen način. Za programske jezike C i C++ to je zastavicom \textit{-g}, o
 Jedna veoma korisna opcija je navođenje \textit{-\phantom{}-tui} zastavice pri pokretanju samog debagera. 
 Korisna je iz razloga što korisnik dobija izvorni kod programa koji debaguje, što dalje olakšava posao postavljanja
 tačaka prekida i eventualno uočavanje nekih od grešaka\cite{oReilly}.\\
-Neke od metoda kojima programer može upravljati GDB debagerom:\cite{art_debugging}
+Neke od metoda kojima programer može upravljati GDB debagerom\cite{art_debugging}:
 \begin{enumerate}
 \item Tačke zaustavljanja (\textit{eng.} breakpoints) \\
 Komandom \textbf{break}, uz koju se navodi broj linije na kojoj GDB treba da pauzira izvršavanje, 
@@ -283,7 +283,7 @@ ta tačka zaustavljanja prestaje da važi.
 \subsubsection{Tačke zaustavljanja}
 \label{subsec:gdbtackezaustavljanja}
 
-Postoje tri razloga zbog kojih GDB može pauzirati izvršavanje programa:\cite{art_debugging}
+Postoje tri razloga zbog kojih GDB može pauzirati izvršavanje programa\cite{art_debugging}:
 \begin{enumerate}
 \item Tačka zaustavljanja (\textit{eng.} breakpoint) \\
 GDB pauzira izvršavanje programa kada se stigne do naznačenog mesta u programu.
@@ -309,7 +309,7 @@ Pozivanjem GDB komande \textbf{frame}, okviri na steku se numerišu od nule, po�
 od vrha steka. GDB komanda \textbf{up} vodi do narednog roditeljskog stek frejma, dok komanda \textbf{down} 
 vodi u suprotnom smeru. Navedene operacije mogu biti veoma korisne, jer vrednosti lokalnih 
 promenljivih u nekim od ranijih poziva mogu dati rešenje o tome šta je tačno izazvalo bag. 
-GDB komanda \textbf{backtrace} pokazuje ceo stek tj. celu kolekciju stek frejmova koja trenutno postoji na steku\cite{art_debugging}.
+GDB komanda \textbf{backtrace} pokazuje ceo stek tj. celu kolekciju stek frejmova koja trenutno postoji na steku\cite{art_debugging}.\\
 Jedan primer ispisa greške, kao i stek poziva se može naći u \ref{listingGreska}.
 
 
@@ -365,7 +365,7 @@ koji predstavljaju više od alata za debagovanje. IDE obuhvata editor, alat za i
 razvojna pomagala. Ideja je u osnovi pružiti programsko okruženje u kojem se uređivanje koda i izvršavanje
 odvijaju istovremeno - unutar okruženja za uređivanje koda, a pomoću alata za praćenje stanja promenljivih\cite{computerworld}.
 Jedan od najpoznatijih IDE okruženja koje koristi GDB je Eclipse sistem,
-a pored njega prisutan je i u CLion-u, QT Creatoru-u, Code::Blocks-u\cite{sourceware}.
+a pored njega GDB je prisutan i u CLion-u, QT Creatoru-u, Code::Blocks-u\cite{sourceware}.
 %Korišćenje GDB-a kroz QT Creator će biti podrobnije objašnjeno u delu \ref{subsec:QT}
 
 \subsection{Grafičko okruženje gdbgui}
@@ -377,7 +377,7 @@ programa se može dobiti naredbom \textit{gdbgui -\phantom{}-help}\cite{gdbgui}.
 identično kao i iz konzole, s obzirom da program sadrži terminal u sebi za ispis koji GDB inače vrši. Ono 
 što olakšava posao i što je prevashodno razlog postojanja gdbgui-a, je lakše upravljanje tačkama prekida,
 lakši pregled informacija od značaja, kao i prikaz samog izvornog koda, koji se kod konzolnog korišćenja 
-dobija zastavicom -\phantom{}-\textit{tui}. ??
+dobija zastavicom \textit{-\phantom{}-tui}.
 
 Pojednostavljen prikaz gdbgui-a dat je slikom \ref{fig:gdbgui} uz smernice za šta koji deo služi.
 Mogućnosti koje poseduje alat gdbgui su sledeće\cite{n0where}: 
@@ -502,17 +502,17 @@ memoriju nakon što je oslobođena, čitanje/pisanje na kraj alociranog bloka me
 curenje memorije i  mnoge druge. Valgrind će greške koje se teško pronalaze naći lako. Vrlo je 
 temeljit. Iskustvo programera pokazuje da će otklanjanje svih grešaka koje Valgrind pronađe 
 uštedeti vreme na duže staze. Ponaša se poput virtualnog x86 prevodioca, pa će program raditi 10 
-do 30 puta sporije od uobičajenog \cite{valgrind}.\\
+do 30 puta sporije od uobičajenog\cite{valgrind}.\\
 
-Kakva je razlika između Valgrind-a i GDB-a?
+Kakva je razlika između Valgrind-a i GDB-a?\cite{valgrind}
 \begin{enumerate}
-\item[•]GDB je program za pronalaženje grešaka u kodu, Valgrind između ostalog proverava memoriju;
+\item[•]GDB je program za pronalaženje grešaka u kodu, Valgrind između ostalog proverava i memoriju;
 \item[•]GDB nam dozvoljava da vidimo šta se dešava unutar programa dok on radi;
 \item[•]Valgrind nam neće dozvoliti da interaktivno prolazimo kroz program;
 \item[•]GDB ne proverava da li se koriste neinicijalizovane vrednosti ili je preplavljena dinamička memorija;
 \item[•]I GDB i Valgrind će pokazati broj linije u kojoj se desio Segmentation fault;
 \item[•]Valgrind često pokazuje i uzrok  Segmentation fault-a;
-\item[•]Često se greške pronalaze i ispravljaju brže koristeći Valgrind nego GDB. \cite{valgrind}
+\item[•]Često se greške pronalaze i ispravljaju brže koristeći Valgrind nego GDB.
 \end{enumerate}
 
 \section{Zaključak}
