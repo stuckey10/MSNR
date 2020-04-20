@@ -364,7 +364,7 @@ Sa druge strane, danas je sve veća upotreba integrisanih razvojnih okruženja (
 koji predstavljaju više od alata za debagovanje. IDE obuhvata editor, alat za izgradnju koda, debager i druga 
 razvojna pomagala. Ideja je u osnovi pružiti programsko okruženje u kojem se uređivanje koda i izvršavanje
 odvijaju istovremeno - unutar okruženja za uređivanje koda, a pomoću alata za praćenje stanja promenljivih\cite{computerworld}.
-Jedan od najpoznatijih IDE okruženja koje koristi GDB je Eclipse sistem,
+Jedno od najpoznatijih IDE okruženja koje koristi GDB je Eclipse sistem,
 a pored njega GDB je prisutan i u CLion-u, QT Creatoru-u, Code::Blocks-u\cite{sourceware}.
 %Korišćenje GDB-a kroz QT Creator će biti podrobnije objašnjeno u delu \ref{subsec:QT}
 
@@ -379,8 +379,16 @@ identično kao i iz konzole, s obzirom da program sadrži terminal u sebi za isp
 lakši pregled informacija od značaja, kao i prikaz samog izvornog koda, koji se kod konzolnog korišćenja 
 dobija zastavicom \textit{-\phantom{}-tui}.
 
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.3]{gdbgui.png}
+\end{center}
+\caption{gdbgui: 1) Load Binary 2) Dugmići za kontrolu 3) Kod 4) Informacije o programu u tačkama prekida 5) Konzola 6) Promt}
+\label{fig:gdbgui}
+\end{figure}
+
 Pojednostavljen prikaz gdbgui-a dat je slikom \ref{fig:gdbgui} uz smernice za šta koji deo služi.
-Mogućnosti koje poseduje alat gdbgui su sledeće\cite{n0where}: 
+Duga je lista mogućnosti koje poseduje alat gdbgui, a neke najznačajnije su sledeće\cite{n0where}: 
 \begin{enumerate}
 \item Debagovanje različitih programa u različitim karticama (eng. \textit{tab})
 \item Postavljanje/uklanjanje tačaka prekida
@@ -396,14 +404,6 @@ Mogućnosti koje poseduje alat gdbgui su sledeće\cite{n0where}:
 
 
 
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[scale=0.3]{gdbgui.png}
-\end{center}
-\caption{gdbgui: 1) Load Binary 2) Dugmići za kontrolu 3) Kod 4) Informacije o programu u tačkama prekida 5) Konzola 6) Promt}
-\label{fig:gdbgui}
-\end{figure}
-
 \subsection{GDB u QT Creator razvojnom okruženju}
 \label{subsec:QT}
 
@@ -418,7 +418,7 @@ uvidi neke moguće greške, kao što su nekompatibilnost tipova koji se koriste,
 i sličnih koje su uočljive u tom momentu. Nažalost, dosta grešaka ostaje neprimećeno. Tu nam pomaže debager,
 u ovom slučaju GDB, čija će upotreba na nekom jednostavnijem nivou biti prikazana u dodatku \ref{upotrebaQT}. 
 QT creator se može koristiti u \textbf{Debug} režimu kako bi se ispitivalo stanje aplikacije u toku njenog izvršavanja,
-dok se sa samim debagerom može interagovati na više načina, između ostalog:\cite{QT} 
+dok se sa samim debagerom može interagovati na više načina, između ostalog \cite{QT}:
 
 \begin{enumerate}
 \item Prolaskom kroz program liniju po liniju ili instrukciju po instrukciju
@@ -471,7 +471,7 @@ najčešće korišćenih\cite{lldb}. Razlike su date u tabeli \ref{tab:tabela1}:
 \begin{table}[h!]
 \begin{center}
 \caption{Razlike između GDB i LLDB komandi}
-\begin{tabular}{|l|c|c|} \hline
+\begin{tabular}{|l |c|c|} \hline
                                                  & GDB            & LLDB                                                                  \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 Pokretanje programa                              & run            & process launch                                                        \\
@@ -607,7 +607,7 @@ zaustavljen u toj tački i ispitujemo informacije za nju.
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[scale=0.7]{breakpoint_info.png}
+\includegraphics[scale=0.55]{breakpoint_info.png}
 \end{center}
 \caption{Informacije o jednoj tački prekida}
 \label{fig:point_info}
@@ -619,7 +619,7 @@ omogućiti ili onemogućiti, brisati. Kako spisak izgleda, dato je slikom \ref{f
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[scale=0.7]{breakpoints_list.png}
+\includegraphics[scale=0.6]{breakpoints_list.png}
 \end{center}
 \caption{Spisak tački prekida i neke dodatne informacije o njima}
 \label{fig:points_list}
@@ -642,7 +642,7 @@ spiska svih tačaka prekida, sa informacijom u kojoj liniji je trenutno program,
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[scale=0.3]{breakpoints_res.png}
+\includegraphics[scale=0.5]{breakpoints_res.png}
 \end{center}
 \caption{Informacije o promenljivama u tačkama prekida}
 \label{fig:points_res}
@@ -651,7 +651,7 @@ spiska svih tačaka prekida, sa informacijom u kojoj liniji je trenutno program,
 
 \begin{figure}[h!]
 \begin{center}
-\includegraphics[scale=0.3]{signals.png}
+\includegraphics[scale=0.6]{signals.png}
 \end{center}
 \caption{Signal pri nepravilnom završavanju programa}
 \label{fig:signals}

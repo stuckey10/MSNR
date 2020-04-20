@@ -86,7 +86,7 @@ U poglavlju 4.1.2 možda je lepše u zagradi napisati ``počevši od vrha steka`
 \odgovor{Crtica je zamenjena zarezom, jer smatramo da tako lepše izgleda nego u zagradama, ali je konstatacija na mestu. Razmak nije u pdf-u zbog latex-a, jer on tako ostavlja, ali je i to rešeno.}
 U poglavlju 5.1 jedna od rečenica glasi ``Tako se tu mogu naći..``, lepše je napisati ``Tu se mogu naći..``, na više mesta u ovom poglavlju nije napravljen razmak 
 na mestima gde je potrebno kao na primer ``Load Binary(slika 1.1)`` ili ``konzole(slika 1.5)``.
-\odgovor{Razmaci su rešeni, s obzirom na naknadno dodavanje tih delova, nije uočeno da nedostaju razmaci.}
+\odgovor{Određeni deo je naknadno izbačen}
 Globalno je možda lepše, kada referišemo na sliku, tu referencu staviti u zagradu, na primer (1) umesto 1. Stilovi pisanja su prilično dobro usklađeni.
 \odgovor{Ako referencu stavimo u zagradu, rečenice gube smisao. Na primer, u rečenici "Pojednostavljen prikaz gdbgui-a dat je slikom 1" ne bi imalo smisla 1 staviti u zagradu.}
 
@@ -168,7 +168,7 @@ Ovaj rad prelazi opšte koncepte baga i debagovanja, nakon čega te iste koncept
 	\odgovor{Greška je ispravljena. Obrisan je Mac OS X iz pomenute rečenice, jer on spada u uniksolike operativne sisteme.}
 	\item Pri obradi QT Creator-a i njegovog okruženja za debagovanje je napomenuto da pri zaustavljanju programa nema nikakve indikacije gde se desila fatalna greška, što je netačno, jer je u svakom trenutku dostupan ceo stek sa pozivima funkcija sa trenutnim brojevima linija, kao i trenutno stanje promenjlivih, ovo će biti dostupnoi čak iako se ne postavi tačka zaustavljanja na mesto greške.
 	\odgovor{Rešen je problem, određeni prozor u kom se to ispisuje je bio isključen, samim tim nije uočen ispis čak iako je bio tražen s obzirom da u literaturi piše da ima ispisa, ali se kod autora
-	nije pojavljivao, pa neke neproverene stvari autor nije hteo da stavlja u rad.}
+	nije pojavljivao, pa neke neproverene stvari autor nije hteo da stavlja u rad, određeni deo je sada u dodatku, s tim da ispis nije prikazan slikom.}
            \item U C++ kodu iz listinga 1 ima sintaksička greška, kose crte za komentare su pogrešnom smeru.  \\
 	\odgovor{Rešena primedba, pogrešna strana je ostala zbog latex-a i oznake za novi red, pa je autor povučen time napravio grešku.}
 	\item Pri kraju se u sekciji "Poređenje sa drugim popularnim debagerima", GDB poredi sa VALGRIND-om, što u kontekstu podnaslova nema mnogo smisla, s obzirom da VALGRIND nije debager već skup alata za, pre svega, profajliranje. Čak i da se ograničimo na Memcheck, i on je isključivo memorijski debager, što po definiciji znači da služi za dosta različit skup problema od regularnih debagera, pa mi se čini da nije dobro porediti ih. Moje mišljenje je da treba ili obraditi drugi debager ili se pozabaviti pitanjem: "Kada treba koristiti debager, a kada profajler?" 
@@ -205,7 +205,7 @@ Ili pak ako nije originalno, da se doda izvor.
 \item Ni u jednom trenutku se ne pokazuje izgled GDB u terminalu. Bilo bi mnogo jasnije kako funkcionise GDB, posebno rad sa stekom, kad bi se ubacila barem 
 jedna slika programa pokrenutog sa terminalskom verzijom istog.\\
  	\odgovor{Prikazan je primer jednog jako jednostavnog koda, koji ima grešku već u funkciju koju poziva main funkcija, tako da
- 	dubina steka nije značajno velika.}
+ 	dubina steka nije značajno velika, ali se nadamo da dovoljno oslikava ispis greške pri jednostavnom primeru.}
 \end{enumerate}
 \section{Provera sadržajnosti i forme seminarskog rada}
 % Oдговорите на следећа питања --- уз сваки одговор дати и образложење
