@@ -1,4 +1,4 @@
-DOCNAME= 09_GNU_GDB_debager_Pantelić_Cvetkoski_Ristanović_Stamenić
+DOCNAME= MVJ_09_GNU_GDB_debager_Pantelić_Cvetkoski_Ristanović_Stamenić
 
 all: sem
 
